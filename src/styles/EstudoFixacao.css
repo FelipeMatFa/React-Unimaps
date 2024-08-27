@@ -1,0 +1,44 @@
+main{
+    padding: 16vh 4vw;
+}
+
+.main-primeira-div{
+    display: grid;
+    grid-template-areas: "estatisticas estudos" 
+                         "treinamento estudos";
+    grid-template-columns: 60% 30%;
+    gap: 20px;
+    /* grid-template-rows: 0.4fr 2fr; */
+    border: 1px solid black;
+}
+
+.main-primeira-div_primeira-sessao{
+    display: flex;
+    flex-direction: column;
+    grid-area: estatisticas;
+    padding: 2vh 3vw;
+    background-color: #E2E2E2;
+    border-radius: 15px;
+}
+
+.primeira-sessao_estatisticas{
+    display: flex;
+    flex-direction: row;
+    overflow-x:scroll;
+    gap: 10px;
+}
+
+.primeira-sessao_estatisticas_div{
+    padding: .1vh 5vw;
+    border-radius: 5px;
+    background-color: #C8C8C8;
+}
+
+#primeira-sessao_div_paragrafo{
+    font-weight: 600;
+}
+
+#primeira-sessao_div_nota{
+    font-weight: 600;
+    font-size: 40px;
+}

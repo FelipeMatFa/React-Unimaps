@@ -1,0 +1,43 @@
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2vh 6vw;
+    background-color: #514EF7;
+}
+
+.header-primeira-div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
+#header-primeira-div_logo{
+    height: 7vh;
+}
+
+#header-primeira-div_titulo{
+    font-size: 22px;
+    font-weight: 600;
+    color: white;
+}
+
+.header-segunda-div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+}
+
+.header-segunda-div a{  
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+#header-segunda-div_icone-user{
+    height: 10vh;
+}
