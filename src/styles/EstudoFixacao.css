@@ -2,15 +2,21 @@ main{
     padding: 16vh 4vw;
 }
 
+h2{
+    font-size: 35px;
+}
+
 .main-primeira-div{
     display: grid;
     grid-template-areas: "estatisticas estudos" 
                          "treinamento estudos";
-    grid-template-columns: 60% 30%;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: 40% 20%;
     gap: 20px;
-    /* grid-template-rows: 0.4fr 2fr; */
-    border: 1px solid black;
+    /* grid-template-rows: .3fr .5fr; */
 }
+
+/* MAIN PRIMEIRA SESSAO */
 
 .main-primeira-div_primeira-sessao{
     display: flex;
@@ -21,6 +27,11 @@ main{
     border-radius: 15px;
 }
 
+#primeira-sessao_paragrafo{
+    font-size: 25px;
+    font-weight: 600;
+}
+
 .primeira-sessao_estatisticas{
     display: flex;
     flex-direction: row;
@@ -29,16 +40,96 @@ main{
 }
 
 .primeira-sessao_estatisticas_div{
-    padding: .1vh 5vw;
-    border-radius: 5px;
+    padding: .1vh 4vw;
+    border-radius: 10px;
     background-color: #C8C8C8;
 }
 
 #primeira-sessao_div_paragrafo{
     font-weight: 600;
+    font-size: 20px;
 }
 
 #primeira-sessao_div_nota{
     font-weight: 600;
     font-size: 40px;
+}
+
+/* MAIN SEGUNDA SESSAO */
+
+.main-primeira-div_segunda-sessao{
+    display: flex;
+    flex-direction: column;
+    grid-area: treinamento;
+    padding: 2vh 3vw;
+    background-color: #E2E2E2;
+    border-radius: 15px;
+}
+
+#segunda-sessao_paragrafo{
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.formulario-treinamento{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.formulario-treinamento input{
+    height: 5vh;
+    background-color: #C8C8C8;
+    border: none;
+    border-radius: 5px;
+}
+
+#formulario-treinamento_conteudo{
+    width: 80vw;
+}
+
+#formulario-treinamento_tempo{
+    width: 10vw;
+}
+
+#formulario-treinamento_submeter{
+    width: 10vw;
+    background-color: black;
+}
+
+/* MAIN TERCEIRA SESSAO */
+
+.main-primeira-div_terceira-sessao{
+    display: flex;
+    flex-direction: column;
+    grid-area: estudos;
+    padding: 2vh 3vw;
+    background-color: #E2E2E2;
+    border-radius: 15px;
+}
+
+#terceira-sessao_paragrafo{
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.terceira-sessao_primeira-div{
+    display: flex;
+    flex-direction: column;
+    overflow-y:scroll;
+    gap: 10px;
+}
+
+.terceira-sessao_primeira-div_sessao-ultimos-estudos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #C8C8C8;
+    border-radius: 10px;
+    padding: .1vh 2vw;
+}
+
+#primeira-div_sessao-ultimos-estudos_mencao{
+    font-size: 60px;
 }
