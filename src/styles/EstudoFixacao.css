@@ -1,5 +1,5 @@
 main{
-    padding: 16vh 4vw;
+    padding: 10vh 4vw;
 }
 
 h2{
@@ -11,7 +11,7 @@ h2{
     grid-template-areas: "estatisticas estudos" 
                          "treinamento estudos";
     grid-template-columns: 70% 30%;
-    grid-template-rows: 40% 20%;
+    grid-template-rows: 40% 30%;
     gap: 20px;
     /* grid-template-rows: .3fr .5fr; */
 }

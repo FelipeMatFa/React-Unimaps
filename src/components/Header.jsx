@@ -11,10 +11,11 @@ function header(){
             </div>
 
             <div className='header-segunda-div'>
-                <a href="">HOME</a>
-                <a href="">MAPAS</a>
-                <a href="">ESTUDO</a>
-                <a href="">CHAT IA</a>
+                <a href="/home">HOME</a>
+                <a href="/mapa">MAPAS</a>
+                <a href='/enem'>ENEM</a>
+                <a href="">ATIVIDADES</a>
+                <a href="/chat">CHAT IA</a>
                 <img id="header-segunda-div_icone-user" src={Userico} alt="Icone do perfil" />
             </div>
         </header>
