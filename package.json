@@ -21,7 +21,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "concurrently \"cross-env PORT=3000 react-scripts start\" \"nodemon banco/server.js\"",
+    "start": "concurrently \"cross-env PORT=3006 react-scripts start\" \"nodemon banco/server.js\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
