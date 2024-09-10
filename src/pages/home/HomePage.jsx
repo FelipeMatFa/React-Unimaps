@@ -1,6 +1,7 @@
 import Header from '../../components/Header'
-import imagens from '../../assets/user.png'
 import "../../styles/Home.css"
+
+import Images from '../../assets/image'
 
 function HomePage(){
     return(
@@ -9,19 +10,19 @@ function HomePage(){
             <h1 id="main_paragrafo">Bem-vindo {sessionStorage.getItem('user')}!</h1>
             <section className='main_navegacao'>
                 <div className='main_navegacao_atalhos'>
-                    <img src={imagens} alt="" />
+                    <img src={Images.userIco} alt="" />
                     <p>SEU PERFIL</p>
                 </div>
                 <div className='main_navegacao_atalhos'>
-                    <img src={imagens} alt="" />
+                    <img src={Images.infoIco} alt="" />
                     <p>DICAS</p>
                 </div>
                 <div className='main_navegacao_atalhos'>
-                    <img src={imagens} alt="" />
+                    <img src={Images.tarefasIco} alt="" />
                     <p>TAREFAS</p>
                 </div>
                 <div className='main_navegacao_atalhos'>
-                    <img src={imagens} alt="" />
+                    <img src={Images.infoIco} alt="" />
                     <p>INFORMAÇÕES</p>
                 </div>
             </section>

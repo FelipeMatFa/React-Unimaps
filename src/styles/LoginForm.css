@@ -1,0 +1,20 @@
+*{ 
+    margin: 0;
+    padding: 0;
+}
+
+.formulario-login{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    text-align: center;
+    padding: 25vh;
+    gap: 15px;
+    border-radius: 20px;
+}
+
+.formulario-login input{
+    padding: 1vh 1vh;
+    height: 6vh;
+    font-size: 20px;
+}

@@ -7,7 +7,7 @@ function EnemPage(){
     return(
         <div>
             <Header></Header>
-            <embed src={Enem2023} type="application/pdf" width="1920px" height="830px" />
+            <embed src={Enem2023} type="application/pdf" width="1300px" height="830px" />
             {/* Colocar opição ver resultados = gabarito da prova do enem */}
         </div>
         

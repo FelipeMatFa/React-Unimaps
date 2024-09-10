@@ -1,0 +1,11 @@
+*{
+    margin: 0;
+    padding: 0;
+    /* background-image: linear-gradient(to bottom, #2581FF, #E726FF); */
+}
+
+.div-login{
+    padding: 10vh 40vh;
+    height: 100vh;
+    background-image: linear-gradient(to bottom, #2581FF, #E726FF);
+}
