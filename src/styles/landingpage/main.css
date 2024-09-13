@@ -1,0 +1,65 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+main{
+    margin: 0;
+}
+
+.main_primeira-div{
+    display: flex;
+    flex-direction: column;
+    background-image: url('../../assets/fundo-langpage.png');
+    padding: 20vh 40vw;
+    background-repeat: no-repeat;
+}
+
+.main_segunda-div{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 12vh 0vh;
+}
+
+#segunda-div_primeiro-paragrafo{
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.segunda-div_sessao-recursos{
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    overflow-x: scroll;
+}
+
+.sessao-recursos_conteudo{
+    display: grid;
+    grid-template-areas: "imagem" 
+                         "titulo"
+                         "descricao";
+    grid-template-columns: 70% 10% 20%;
+    border-radius: 10px;
+    gap: 10px;
+    background-color: #D9D9D9;
+    padding-bottom: 8vh;
+}
+
+.sessao-recursos_conteudo img{
+    grid-area: imagem;
+    width: 25vw;
+    height: 40vh;
+}
+
+#conteudo_titulo{
+    grid-area: titulo;
+    font-size: 21px;
+    font-weight: 600;
+}
+
+#conteudo_descricao{
+    grid-area: descricao;
+    font-size: 17px;
+
+}

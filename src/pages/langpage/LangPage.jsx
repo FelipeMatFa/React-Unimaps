@@ -1,7 +1,11 @@
-
+import Header from '../langpage/header/header'
+import Main from '../langpage/main/main'
 function LangPage(){
     return(
-        <h1>OI</h1>
+        <div>
+            <Header></Header>
+            <Main></Main>
+        </div>
     )
 }
 

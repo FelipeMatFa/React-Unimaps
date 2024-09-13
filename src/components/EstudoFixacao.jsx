@@ -3,40 +3,30 @@ import '../styles/EstudoFixacao.css'
 
 function EstudoFixacao(){
     const [conteudo, setConteudo] = useState("")
+    const [tempo, setTempo] = useState("")
     // const formulario = document.getElementsByClassName("formulario-treinamento");
 
     const handleSubmit = async(e) => {
         e.preventDefault()
         alert(conteudo)
+        alert(tempo)
 
-        // const data = {
-        //     conteudo,
-            
-        // }
-        
-        // const response = await fetch ('http://localhost:3001/api/chat', {
-        //     method: "POST",
-        //     headers: {"Content-Type":"application/json;charset=UTF-8"},
-        //     body: JSON.stringify(data)
-        // });
+        let data = { conteudo };
+        const response = await fetch(`http://localhost:3001/api/chat`, {
+            method: "POST",
+            headers: { "Content-type": "application/json;charset=UTF-8" },
+            body: JSON.stringify(data),
+        });
+
+        let content = await response.json();
+
+        if (content.data) {
+            console.log(content)
+        } else {
+            console.log("Deu erro!");
+        }
 
     }
-
-    // formulario.onsubmit = async function(e){
-    //     e.preventDefault();
-    //     const conteudo = document.getElementById('formulario-treinamento_conteudo').value;
-    //     const tempo = document.getElementById('formulario-treinamento_tempo').value;
-
-    //     const data = {conteudo, tempo}
-
-    //     const response = await fetch ('http://localhost:3001/api/chat', {
-    //         method: "POST",
-    //         headers: {"Content-Type":"application/json;charset=UTF-8"},
-    //         body: JSON.stringify(data)
-    //     });
-
-    //     const result = await response.json();
-    // }
 
     return(
         <main>
@@ -77,7 +67,13 @@ function EstudoFixacao(){
                             value={conteudo}
                             onChange={(e) => setConteudo(e.target.value)}
                         />
-                        <input id='formulario-treinamento_tempo' type="text" placeholder="Quanto tempo?"/>
+                        <input 
+                            id='formulario-treinamento_tempo' 
+                            type="number" 
+                            placeholder="Quanto tempo?"
+                            value={tempo}
+                            onChange={(e) => setTempo(e.target.value)}
+                        />
                         {/* <input id='formulario-treinamento_submeter' type="submit"/> */}
                         <button>Qunrto tempo?</button>
                     </form>
