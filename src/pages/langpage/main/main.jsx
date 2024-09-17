@@ -5,11 +5,11 @@ function Main(){
     return(
         <main>
             <div className="main_primeira-div">
-                <p>
+                <p id="primeira-div_primeiro-paragrafo">
                     Bem-vindo ao Unimaps.
-                    O site feito para o estudante.
+                    <br></br>O site feito para o estudante.
                 </p>
-                <p>
+                <p id='primeira-div_segundo-paragrafo'>
                     Com nossa plataforma você está no caminho certo para alcançar seu sucesso universitário
                 </p>
             </div>
@@ -18,59 +18,57 @@ function Main(){
                 <section className='segunda-div_sessao-recursos'>
                     <div className='sessao-recursos_conteudo'>
                         <img src={Images.imagemIA} alt="" />
-                        <p 
-                            id='conteudo_titulo'
-                            >Estudo com IA
-                        </p>
-                        <p
-                            id='conteudo_descricao'
-                            >Uma maneira prática e nova de se estudar com pouco tempo.
-                        </p>
+                        <section className='conteudo-informacoes'>
+                            <p 
+                                id='conteudo_titulo'
+                                >Estudo com IA
+                            </p>
+                            <p
+                                id='conteudo_descricao'
+                                >Uma maneira prática e nova de se estudar com pouco tempo.
+                            </p>
+                        </section>
                     </div>
                     <div className='sessao-recursos_conteudo'>
                         <img src={Images.imagemIA} alt="" />
-                        <p 
-                            id='conteudo_titulo'
-                            >Conversa em grupo
-                        </p>
-                        <p
-                            id='conteudo_descricao'
-                            >Para aqueles que queiram conhecer novos lugares e pessoas.
-                        </p>
+                        <section className='conteudo-informacoes'>
+                            <p 
+                                id='conteudo_titulo'
+                                >Crie prazos
+                            </p>
+                            <p
+                                id='conteudo_descricao'
+                                >Adicione tarefas e prazos para começar a se organizar
+                            </p>
+                        </section>
                     </div>
                     <div className='sessao-recursos_conteudo'>
                         <img src={Images.imagemIA} alt="" />
-                        <p 
-                            id='conteudo_titulo'
-                            >Faça suas anotações
-                        </p>
-                        <p
-                            id='conteudo_descricao'
-                            >Deixe tudo que você faz ou vai fazer registrado na nuvem.
-                        </p>
+                        <section className='conteudo-informacoes'>
+                            <p 
+                                id='conteudo_titulo'
+                                >Faça suas anotações
+                            </p>
+                            <p
+                                id='conteudo_descricao'
+                                >Deixe tudo que você faz ou vai fazer registrado na nuvem.
+                            </p>
+                        </section>
                     </div>
                     <div className='sessao-recursos_conteudo'>
                         <img src={Images.imagemIA} alt="" />
-                        <p 
-                            id='conteudo_titulo'
-                            >Faça suas anotações
-                        </p>
-                        <p
-                            id='conteudo_descricao'
-                            >Deixe tudo que você faz ou vai fazer registrado na nuvem.
-                        </p>
+                        <section className='conteudo-informacoes'>
+                            <p 
+                                id='conteudo_titulo'
+                                >Estudo com IA
+                            </p>
+                            <p
+                                id='conteudo_descricao'
+                                >Uma maneira prática e nova de se estudar com pouco tempo.
+                            </p>
+                        </section>
                     </div>
-                    <div className='sessao-recursos_conteudo'>
-                        <img src={Images.imagemIA} alt="" />
-                        <p 
-                            id='conteudo_titulo'
-                            >Faça suas anotações
-                        </p>
-                        <p
-                            id='conteudo_descricao'
-                            >Deixe tudo que você faz ou vai fazer registrado na nuvem.
-                        </p>
-                    </div>
+                    
                 </section>
             </div>
         </main>

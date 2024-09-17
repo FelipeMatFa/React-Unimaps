@@ -5,14 +5,28 @@
 
 main{
     margin: 0;
+    padding: 0;
 }
 
 .main_primeira-div{
     display: flex;
     flex-direction: column;
     background-image: url('../../assets/fundo-langpage.png');
-    padding: 20vh 40vw;
+    padding: 20vh;
+    height: 80vh;
     background-repeat: no-repeat;
+}
+
+#primeira-div_primeiro-paragrafo{
+    font-size: 50px;
+    font-weight: 600;
+    color: white;
+}
+
+#primeira-div_segundo-paragrafo{
+    font-size: 30px;
+    color: white;
+    width: 55vw;
 }
 
 .main_segunda-div{
@@ -25,6 +39,7 @@ main{
 #segunda-div_primeiro-paragrafo{
     font-size: 40px;
     font-weight: 600;
+    padding: 2vh 4vw;
 }
 
 .segunda-div_sessao-recursos{
@@ -37,29 +52,36 @@ main{
 .sessao-recursos_conteudo{
     display: grid;
     grid-template-areas: "imagem" 
-                         "titulo"
-                         "descricao";
-    grid-template-columns: 70% 10% 20%;
+                         "conteudo";
+    grid-template-rows: 70% 10% 20%;
     border-radius: 10px;
     gap: 10px;
-    background-color: #D9D9D9;
-    padding-bottom: 8vh;
+    background-color: #C3C3C3;
+    padding-bottom: 6vh;
 }
 
 .sessao-recursos_conteudo img{
     grid-area: imagem;
+    /* border-top-right-radius: 10px;
+    border-top-left-radius: 10px; */
+    border-radius: 10px 10px 0px 0px;
     width: 25vw;
     height: 40vh;
 }
 
+.conteudo-informacoes{
+    display: flex;
+    flex-direction: column;
+    grid-area: conteudo;
+    padding: 1vh 1.5vw;
+    gap: 10px;
+}
+
 #conteudo_titulo{
-    grid-area: titulo;
     font-size: 21px;
     font-weight: 600;
 }
 
 #conteudo_descricao{
-    grid-area: descricao;
-    font-size: 17px;
-
+    font: optional;
 }
