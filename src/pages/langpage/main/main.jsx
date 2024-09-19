@@ -68,7 +68,17 @@ function Main(){
                             </p>
                         </section>
                     </div>
-                    
+                </section>
+            </div>
+
+            <div className='main_terceira-div'>
+                <section className='terceira-div_primeira-sessao'>
+                    <img id="primeira-sessao_img" alt=""/>
+                </section>
+
+                <section className='terceira-div_segunda-sessao'>
+                    <p id="segunda-sessao_primeiro-paragrafo">Um site criado para ajudar os estudantes universitários em seus estudos</p>
+                    <button id="segunda-sessao_botao-saiba-mais">Saiba mais</button>
                 </section>
             </div>
         </main>

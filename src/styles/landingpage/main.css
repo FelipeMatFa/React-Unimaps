@@ -3,6 +3,11 @@
     padding: 0;
 }
 
+body {
+    font-family: 'League Spartan', sans-serif;
+}
+
+
 main{
     margin: 0;
     padding: 0;
@@ -84,4 +89,49 @@ main{
 
 #conteudo_descricao{
     font: optional;
+}
+
+.main_terceira-div {
+    display: grid;
+    grid-template-areas: 
+        "texto apresentacao";
+    grid-template-columns: 50% 50%;
+    background-color: #D9D9D9;
+    margin: 5vh 5vh;
+}
+
+.terceira-div_primeira-sessao {
+    grid-area: apresentacao;
+    background-image: url(../../assets/imagem-ia.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#primeira-sessao_img{
+    height: 60vh;
+}
+
+.terceira-div_segunda-sessao {
+    grid-area: texto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 8vh 4vw;
+}
+
+#segunda-sessao_primeiro-paragrafo{
+    font-size: 35px;
+    font-weight: 600;
+    color: #252525;
+}
+
+#segunda-sessao_botao-saiba-mais{
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    background-color: rgb(0, 0, 0);
+    width: 14vw;
+    height: 6vh;
 }
