@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.footer_primeira-div{
+    display: flex;
+    flex-direction: column;
+    height: 25vh;
+    gap: 4vh;
+    margin-top: 20vh;
+    border-top: 1px solid black;
+    padding: 4vh 4vw;
+}
+
+.footer_primeira-div_primeira-sessao{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    font-size: 20px;
+}
+
+.footer_primeira-div_segunda-sessao{
+    font-size: 14px;
+}

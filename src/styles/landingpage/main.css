@@ -18,8 +18,10 @@ main{
     flex-direction: column;
     background-image: url('../../assets/fundo-langpage.png');
     padding: 20vh;
-    height: 80vh;
+    height: 60vh;
+    width: 100vw;
     background-repeat: no-repeat;
+    background-size: 83%;
 }
 
 #primeira-div_primeiro-paragrafo{
@@ -97,7 +99,7 @@ main{
         "texto apresentacao";
     grid-template-columns: 50% 50%;
     background-color: #D9D9D9;
-    margin: 5vh 5vh;
+    margin: 5vh 4vw;
 }
 
 .terceira-div_primeira-sessao {
@@ -134,4 +136,130 @@ main{
     background-color: rgb(0, 0, 0);
     width: 14vw;
     height: 6vh;
+}
+
+
+.main_quarta-div{
+    display: flex;
+    flex-direction: column;
+    padding: 4vh 4vw;
+    gap: 5vh;
+}
+
+#quarta-div_primeiro-paragrafo{
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.quarta-div_primeira-sessao{
+    display: flex;
+    flex-direction: row;
+    gap: 3vw;
+}
+
+.quarta-div_primeira-sessao_div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2vh 2vw;
+    background-color: #D9D9D9;
+    box-shadow: 1px 1px 1px 1px;
+    gap: 10px;
+}
+
+.quarta-div_primeira-sessao_div img{
+    height: 10vh;
+    width: 4.5vw;
+}
+
+#quarta-div_primeira-sessao_div_titulo{
+    font-weight: 600;
+}
+
+#quarta-div_primeira-sessao_div_paragrafo{
+    font-size: 14px;
+    width: 16.5vw;
+}
+
+.main_quinta-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 12vh 4vw;
+}
+
+.main_quinta-div_primeira-sessao{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    width: 20vw;
+}
+
+.main_quinta-div_primeira-sessao button{
+    width: 10vw;
+    height: 4vh;    
+    background-color: black;
+    border: none;
+    color: white;
+}
+
+#main_quinta-div_primeira-sessao_primeiro-paragrafo{
+    font-size: 20px;
+}
+
+#main_quinta-div_primeira-sessao_segundo-paragrafo{
+    font-size: 50px;
+    font-weight: 600;
+}
+
+#main_quinta-div_primeira-sessao_terceiro-paragrafo{
+    font-size: 20px;
+}
+
+.main_quinta-div_segunda-sessao{
+    width: 30vw;
+}
+
+.main_quinta-div_segunda-sessao img{
+    height: 70vh;
+}
+
+.main_quinta-div_terceira-sessao{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3vh;
+    width: 25vw;
+}
+
+.main_sexta-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #D9D9D9;
+    margin: 2vh 4vw;
+}
+
+.main_sexta-div_sessao-criador{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#main_sexta-div_sessao-criador_foto-criador{
+    height: 50vh;
+    width: 40vw;
+}
+
+#main_sexta-div_sessao-criador_primeiro-paragrafo{
+    font-size: 60px;
+    font-weight: 600;
+    padding: 8vh 0vw 0vh 3vw;
+}
+
+#main_sexta-div_sessao-criador_segundo-paragrafo{
+    font-size: 18px;
+    width: 40vw;
+    padding: 2vh 0vw 0vh 3vw;
 }
