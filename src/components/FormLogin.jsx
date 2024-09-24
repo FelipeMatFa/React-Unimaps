@@ -1,17 +1,16 @@
+import { useState } from 'react'
 import '../styles/LoginForm.css'
 
 function FormLogin(){
+    const [email, setEmail] = useState("")
+    const [senha, setSenha] = useState("")
 
-    let form = document.getElementsByClassName('formulario-login')
-    form.onsubmit = async function(e){
+    const handleSubmit = async(e) => {
         e.preventDefault()
 
-        const email = document.getElementById('').value;
-        const senha = document.getElementById('').value;
-
-        const data = {email,senha}
+        let data = {email,senha}
         
-        const response = await fetch("http://localhost:3000/api/login", {
+        const response = await fetch("http://localhost:3001/api/login", {
             method: "POST",
             headers: {"Content-Type":"application/json;charset=UTF-8"},
             body: JSON.stringify(data)
@@ -30,11 +29,27 @@ function FormLogin(){
     }
 
     return(
-        <form className='formulario-login'>
+        <form className='formulario-login' onSubmit={handleSubmit}>
             <h1>Faça seu Login</h1>
-            <input type="text" placeholder='exemplo@gmail.com'/>
-            <input type="text" placeholder='*********'/>
-            <input type="submit" value='CONFIRMAR'/>
+
+            <input 
+                type="text" 
+                placeholder='exemplo@gmail.com'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+            />
+
+            <input 
+                type="text" 
+                placeholder='*********'
+                value={senha}
+                onChange={(e) => setSenha(e.target.value)}
+            />
+
+            <input 
+                type="submit" 
+                value='CONFIRMAR'
+            />
         </form>
     )
 }
