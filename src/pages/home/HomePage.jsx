@@ -7,7 +7,7 @@ function HomePage(){
     return(
         <div>
             <Header></Header>
-            <h1 id="main_paragrafo">Bem-vindo {sessionStorage.getItem('user')}!</h1>
+            <h1 id="main_paragrafo">Bem-vindo {sessionStorage.getItem('userName')}!</h1>
             <section className='main_navegacao'>
                 <div className='main_navegacao_atalhos'>
                     <img src={Images.userIco} alt="" />

@@ -3,28 +3,27 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/LoginForm.css';
 
-const baseURL = "http://localhost:3001/api/login";
+const baseURL = "http://localhost:3001/api/cadastro";
 
-function FormLogin() {
+function FormCadastro() {
     const [email, setEmail] = useState("");
+    const [nome, setNome] = useState("");
     const [senha, setSenha] = useState("");
     
     const navigate = useNavigate();
 
-    const handleLogin = () => {
-        navigate('/home');
+    const handleCadastro = () => {
+        navigate('/login');
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const response = await axios.post(baseURL, { email, senha });
+            const response = await axios.post(baseURL, { email, nome, senha });
             if (response.data.success) {
                 console.log(response.data)
-                sessionStorage.setItem('userName', response.data.data[0].nome);
-                sessionStorage.setItem('id', response.data.data[0].id);
-                handleLogin();
+                handleCadastro();
             } else {
                 alert(response.data.message);
             }
@@ -36,13 +35,21 @@ function FormLogin() {
 
     return (
         <form className='formulario-login' onSubmit={handleSubmit}>
-            <h1>Faça seu Login</h1>
+            <h1>Faça seu cadastro</h1>
 
             <input
                 type="email"
                 placeholder='exemplo@gmail.com'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
+            />
+
+            <input
+                type="name"
+                placeholder='Seu nome'
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
                 required
             />
 
@@ -62,4 +69,4 @@ function FormLogin() {
     );
 }
 
-export default FormLogin;
+export default FormCadastro;
