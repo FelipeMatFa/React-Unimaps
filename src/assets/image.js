@@ -8,6 +8,7 @@ import tecnologia from './Tecnologia.png'
 import suporte from './Suporte.png'
 import telaInicial from './Tela_inicial.png'
 import fotoCriador from './FotoCriador.jpg'
+import passWord from './Password.png'
 
 export default{
     infoIco: infoIco,
@@ -20,4 +21,5 @@ export default{
     suporte: suporte,
     telaInicial: telaInicial,
     fotoCriador: fotoCriador,
+    passWord: passWord,
 }

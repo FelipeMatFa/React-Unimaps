@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import '../styles/LoginForm.css';
+import '../styles/FormCadastro.css';
+import images from '../assets/image'
 
 const baseURL = "http://localhost:3001/api/cadastro";
 
@@ -35,36 +36,65 @@ function FormCadastro() {
 
     return (
         <form className='formulario-login' onSubmit={handleSubmit}>
-            <h1>Faça seu cadastro</h1>
+            <h1 id='titulo-login'>Cadastre-se</h1>
+
+            <div className='formulario-login_container'>
+
+                <div className='container_input-email'>
+                    <img
+                        src={images.userIco} alt="" 
+                    />
+                    <input
+                        id='formulario-login_email'
+                        type="email"
+                        placeholder='Example@gmail.com'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
+                </div>
+
+                <div className='container_input-email'>
+                    <img
+                        src={images.userIco} alt="" 
+                    />
+                    <input
+                        id='formulario-login_email'
+                        type="text"
+                        placeholder='Seu nome'
+                        value={nome}
+                        onChange={(e) => setNome(e.target.value)}
+                        required
+                    />
+                </div>
+
+                <div className='container_input-senha'>
+                    <img 
+                        src={images.passWord} alt="" 
+                    />
+                    <input
+                        id='formulario-login_senha'
+                        type="password"
+                        placeholder='Senha'
+                        value={senha}
+                        onChange={(e) => setSenha(e.target.value)}
+                        required
+                    />
+                </div>
+            </div>     
 
             <input
-                type="email"
-                placeholder='exemplo@gmail.com'
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-            />
-
-            <input
-                type="name"
-                placeholder='Seu nome'
-                value={nome}
-                onChange={(e) => setNome(e.target.value)}
-                required
-            />
-
-            <input
-                type="password"
-                placeholder='*********'
-                value={senha}
-                onChange={(e) => setSenha(e.target.value)}
-                required
-            />
-
-            <input
+                id='formulario-login_submit'
                 type="submit"
-                value='CONFIRMAR'
+                value='Confirmar'
             />
+
+            <a
+                id='formulario-login_cadastro'
+                onClick={handleCadastro}
+            >
+                Já possui conta? Clique aqui!
+            </a>
         </form>
     );
 }

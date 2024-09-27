@@ -5,7 +5,65 @@
 }
 
 .div-login{
-    padding: 10vh 40vh;
-    height: 100vh;
-    background-image: linear-gradient(to bottom, #2581FF, #E726FF);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-image: linear-gradient(to Bottom Right, #2581FF, #E726FF);
+}
+
+.div-login_boas-vindas{
+    display: flex;
+    flex-direction: column;
+    padding: 30vh 6vw;
+    gap: 10px;
+}
+
+#texto-boas-vindas{
+    font-size: 50px;
+    width: 30vw;
+    color: white;
+    font-weight: 600;
+}
+
+#texto-mensagem{
+    font-size: 18px;
+    width: 25vw;
+    color: white;
+}
+
+@media screen and (min-width: 400px) and (max-width: 700px){
+    .div-login{
+        display: flex;
+        justify-content: center;
+        background-image: none;
+    }
+
+    .div-login_boas-vindas{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 701px) and (max-width: 900px){
+    #texto-boas-vindas{
+        font-size: 40px;
+        width: 40vw;
+    }
+    
+    #texto-mensagem{
+        font-size: 16px;
+        width: 30vw;
+        color: white;
+    }    
+}
+
+@media screen and (min-width: 901px) and (max-width: 1400px){
+    #texto-boas-vindas{
+        font-size: 50px;
+        width: 40vw;
+    }
+    
+    #texto-mensagem{
+        font-size: 18px;
+        width: 25vw;
+    }    
 }
