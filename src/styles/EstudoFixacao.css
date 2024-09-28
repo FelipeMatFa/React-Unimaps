@@ -2,10 +2,6 @@
     padding: 10vh 4vw;
 } */
 
-h2{
-    font-size: 35px;
-}
-
 .main-primeira-div{
     display: grid;
     grid-template-areas: "estatisticas estudos" 

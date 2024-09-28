@@ -15,10 +15,6 @@
     height: 9vh;
 }
 
-h1{
-    font-size: 22px;
-}
-
 .cabecalho_primeira-sessao{
     display: flex;
     flex-direction: row;
