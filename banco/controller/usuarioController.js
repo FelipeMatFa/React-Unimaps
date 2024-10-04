@@ -1,15 +1,11 @@
 const connection = require('../config/db');
 
-async function marcarLugar(request, response){
+async function selecionarUsuario(request, response){
     const params = Array(
-        request.body.titulo,
-        request.body.descricao,
-        request.body.suaLatitude,
-        request.body.suaLongitude,
-        request.body.id
+        request.body.id,
     );
 
-    const query = "INSERT INTO marcadores(titulo,descricao,latitude,longitude,id_usuario) VALUES(?,?,?,?,?)";
+    const query = "select * from usuario where id = ?";
 
     connection.query(query, params, (err, results) => {
         if(results){
@@ -33,11 +29,15 @@ async function marcarLugar(request, response){
     });
 }
 
-async function listarLugaresMapa(request, response){
-    const id = request.query.id; // Obtendo o parâmetro id da query string
-    const params = [id];
-    
-    const query = "SELECT * FROM marcadores where id_usuario = ?";
+async function atualizarDados(request, response){
+    const params = Array(
+        request.body.email,
+        request.body.nome,
+        request.body.senha,
+        request.body.id
+    );
+
+    const query = "UPDATE usuario SET email = ?, nome = ?, senha = ? WHERE id = ?";
 
     connection.query(query, params, (err, results) => {
         if(results){
@@ -62,6 +62,6 @@ async function listarLugaresMapa(request, response){
 }
 
 module.exports = {
-    marcarLugar,
-    listarLugaresMapa
+    selecionarUsuario,
+    atualizarDados
 }

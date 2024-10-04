@@ -1,0 +1,30 @@
+
+.FormDados{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;  
+}
+
+.FormDados_div-input{
+    gap: 20px;
+}
+
+#div-input_input-nome, #div-input_input-email, #div-input_input-senha{
+    width: 30vw;
+    height: 7vh;
+    padding: 1vh;
+    background-color: #d9d9d9;
+    border: none;
+}
+
+#div-input_input-submit{
+    padding: 2vh;
+    background-color: black;
+    border: none;
+    color: white;
+    font-weight: 600;
+}
+
+#div-input_input-submit:hover{
+    cursor: pointer;
+}

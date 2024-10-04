@@ -9,22 +9,22 @@ function HomePage(){
             <Header></Header>
             <h1 id="main_paragrafo">Bem-vindo {sessionStorage.getItem('userName')}!</h1>
             <section className='main_navegacao'>
-                <div className='main_navegacao_atalhos'>
+                <a className='main_navegacao_atalhos' href='home/perfil'>
                     <img src={Images.userIco} alt="" />
                     <p>SEU PERFIL</p>
-                </div>
-                <div className='main_navegacao_atalhos'>
+                </a>
+                <a className='main_navegacao_atalhos' href='home/dicas'>
                     <img src={Images.infoIco} alt="" />
                     <p>DICAS</p>
-                </div>
-                <div className='main_navegacao_atalhos'>
+                </a>
+                <a className='main_navegacao_atalhos' href='./tarefas'>
                     <img src={Images.tarefasIco} alt="" />
                     <p>TAREFAS</p>
-                </div>
-                <div className='main_navegacao_atalhos'>
+                </a>
+                <a className='main_navegacao_atalhos' href='home/informacoes'>
                     <img src={Images.infoIco} alt="" />
                     <p>INFORMAÇÕES</p>
-                </div>
+                </a>
             </section>
         </div>
     )

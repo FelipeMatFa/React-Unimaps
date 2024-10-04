@@ -7,6 +7,7 @@ import MapaPage from './pages/mapa/MapaPage';
 import ChatPage from './pages/chat/ChatPage';
 import EnemPage from './pages/enem/EnemPage';
 import CadastroPage from './pages/cadastro/CadastroPage';
+import PerfilPage from './pages/perfil/PerfilPage';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path='/home' element={<HomePage/>} />
         <Route path='/chat' element={<ChatPage/>} />
         <Route path='/cadastro' element={<CadastroPage/>}/>
+        <Route path='/home/perfil' element={<PerfilPage/>}/>
       </Routes>
     </BrowserRouter>
   );

@@ -7,21 +7,13 @@ body {
     font-family: 'League Spartan', sans-serif;
 }
 
-
-main{
-    margin: 0;
-    padding: 0;
-}
-
 .main_primeira-div{
     display: flex;
     flex-direction: column;
     background-image: url('../../assets/fundo-langpage.png');
     padding: 20vh;
     height: 60vh;
-    width: 100vw;
-    background-repeat: no-repeat;
-    background-size: 83%;
+    background-size: 100%;
 }
 
 #primeira-div_primeiro-paragrafo{

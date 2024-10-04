@@ -4,6 +4,7 @@ const cadastroRouter = require('./routes/cadastroRouter');
 const loginRouter = require("./routes/loginRouter");
 const marcarLugar = require("./routes/marcadoresRouter");
 const chatRouter = require('./routes/chatRouter');
+const usuario = require('./routes/usuarioRouter');
 
 const app = express();
 app.set('port', process.env.PORT || 3005);
@@ -16,7 +17,8 @@ app.use('/api', [
     cadastroRouter,
     loginRouter,
     marcarLugar,
-    chatRouter
+    chatRouter,
+    usuario
 ]);
 
 module.exports = app;

@@ -1,0 +1,26 @@
+.Div-dados-cadastro{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10vh 1vw;
+}
+
+#primeira-sessao_titulo{
+    font-size: 30px;
+}
+
+.Div-dados-cadastro_primeira-sessao{
+    padding: 1vh;
+}
+
+.primeira-sessao_primeira-div{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#imagem-foto-perfil{
+    height: 45vh;
+    width: 20vw;
+}
