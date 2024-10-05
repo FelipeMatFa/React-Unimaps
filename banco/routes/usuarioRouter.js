@@ -3,7 +3,9 @@ const router = express.Router();
 
 const { selecionarUsuario, atualizarDados } = require('../controller/usuarioController');
 
-router.get('/usuario', selecionarUsuario);
+router.get('/usuario/:id', selecionarUsuario);
 router.put('/atualizarUsuario', atualizarDados);
+
+
 
 module.exports = router;

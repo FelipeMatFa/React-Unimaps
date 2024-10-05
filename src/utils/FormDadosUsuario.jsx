@@ -2,59 +2,43 @@ import '../styles/FormDados.css'
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const baseURL = "http://localhost:3001/api/usuario";
+let id = sessionStorage.getItem('id')
+const consultaURL = `http://localhost:3001/api/usuario/${id}`;
+const atualizarUsuario = "http://localhost:3001/api/atualizarUsuario"
     
 function FormDadosUsuario(){
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
-    console.log(nome, email, senha);
-
     const carregarPerfil = async () => {
-        const id = sessionStorage.getItem('id')
-
         try {
-            const response = await axios.get(baseURL, id);
+            const response = await axios.get(consultaURL);
             if (response.data.success) {
-                console.log(response.data.nome);
-                setEmail(response.data.email)
-                setNome(response.data.nome)
-                setSenha(response.data.senha)
+                console.log(response.data.data);
+                setEmail(response.data.data.email)
+                setNome(response.data.data.nome)
+                setSenha(response.data.data.senha)
             } else {
                 alert(response.data.message);
             }
         } catch (error) {
-            alert("Ocorreu um erro ao tentar salvar seus dados");
+            console.log(error);
         }
     };
 
     useEffect(() => {
         carregarPerfil();
-        const savedEmail = localStorage.getItem('usuario');
-        const savedSenha = localStorage.getItem('senha');
-        const savedNome = localStorage.getItem('nome');
-
-        if (savedEmail) {
-            setEmail(savedEmail);
-        }
-
-        if (savedSenha) {
-            setSenha(savedSenha);
-        }
-
-        if (savedNome) {
-            setSenha(savedNome);
-        }
     }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const response = await axios.post(baseURL, { email, senha });
+            const response = await axios.put(atualizarUsuario, { email, nome, senha, id });
+            
             if (response.data.success) {
-                alert('Good Job')
+                alert('Dados atualizados com sucesso')
             } else {
                 alert(response.data.message);
             }
