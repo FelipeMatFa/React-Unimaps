@@ -4,6 +4,8 @@ import axios from 'axios';
 import '../styles/FormCadastro.css';
 import images from '../assets/image'
 
+// import {ButtonMarcadores} from '../components/ButtonMarcadores'
+
 const baseURL = "http://localhost:3001/api/cadastro";
 
 function FormCadastro() {
@@ -95,6 +97,8 @@ function FormCadastro() {
             >
                 Já possui conta? Clique aqui!
             </a>
+
+            {/* <ButtonMarcadores url="http://localhost:3001/api/cadastro"/>         */}
         </form>
     );
 }

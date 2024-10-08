@@ -1,26 +1,28 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import HomePage from './pages/home/HomePage';
-import LoginPage from './pages/login/LoginPage'
+import Home from './pages/Home';
+import Login from './pages/Login'
 import LangPage from './pages/langpage/LangPage';
-import MapaPage from './pages/mapa/MapaPage';
-import ChatPage from './pages/chat/ChatPage';
-import EnemPage from './pages/enem/EnemPage';
-import CadastroPage from './pages/cadastro/CadastroPage';
-import PerfilPage from './pages/perfil/PerfilPage';
+import Mapa from './pages/Mapa';
+import Chat from './pages/Chat';
+import Enem from './pages/Enem';
+import Cadastro from './pages/Cadastro';
+import Tarefas from './pages/Tarefas'
+import Perfil from './pages/Perfil';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/enem' element={<EnemPage/>} />
-        <Route path='/mapa' element={<MapaPage/>} />
+        <Route path='/enem' element={<Enem/>} />
+        <Route path='/mapa' element={<Mapa/>} />
         <Route path='/' element={<LangPage/>} />
-        <Route path='/login' element={<LoginPage/>} />
-        <Route path='/home' element={<HomePage/>} />
-        <Route path='/chat' element={<ChatPage/>} />
-        <Route path='/cadastro' element={<CadastroPage/>}/>
-        <Route path='/home/perfil' element={<PerfilPage/>}/>
+        <Route path='/login' element={<Login/>} />
+        <Route path='/home' element={<Home/>} />
+        <Route path='/chat' element={<Chat/>} />
+        <Route path='/cadastro' element={<Cadastro/>}/>
+        <Route path='/home/perfil' element={<Perfil/>}/>
+        <Route path='/tarefas' element={<Tarefas/>}/>
       </Routes>
     </BrowserRouter>
   );
