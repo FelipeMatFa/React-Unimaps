@@ -24,6 +24,13 @@ function FormCadastro() {
 
         try {
             const response = await axios.post(baseURL, { email, nome, senha });
+            // fetch('http://localhost:3001/api/cadastro')
+            //     .then(res => {
+            //         return res.json();
+            //     })
+            //     .then(data =>{
+            //         console.log(data)
+            //     })
             if (response.data.success) {
                 console.log(response.data)
                 handleCadastro();
