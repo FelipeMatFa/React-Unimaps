@@ -1,0 +1,18 @@
+.marcadores{
+    margin: 5vh 5vw;
+    display: flex;
+    flex-direction: column;
+    padding: 10vh 1v;
+    width: 20vw;
+    /* background-color: rgb(145, 145, 145); */
+    gap: 10px;
+}
+
+.marcadores_listados{
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 1vh;
+    gap: 10px;
+}

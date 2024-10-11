@@ -10,6 +10,8 @@ import Cadastro from './pages/Cadastro';
 import Tarefas from './pages/Tarefas'
 import Perfil from './pages/Perfil';
 
+import Modal from './utils/Modal'
+
 function App() {
   return (
     <BrowserRouter>
@@ -23,6 +25,8 @@ function App() {
         <Route path='/cadastro' element={<Cadastro/>}/>
         <Route path='/home/perfil' element={<Perfil/>}/>
         <Route path='/tarefas' element={<Tarefas/>}/>
+        
+        <Route path='/modal' element={<Modal/>}/>
       </Routes>
     </BrowserRouter>
   );
