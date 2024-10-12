@@ -1,0 +1,17 @@
+.primeira-div_mapa{
+    display: flex;
+    flex-direction: row;
+}
+
+.Mapa{
+    height: 100vh;
+    width: 70%;
+    z-index: 1;
+}
+
+.primeira-div_mapa_primeira-sessao{
+    display: flex;
+    flex-direction: column;
+    padding: 4vh 5vw;
+    gap: 20px;
+}

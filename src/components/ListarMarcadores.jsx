@@ -29,7 +29,6 @@ function ListarMarcadores() {
 
     return (
         <ul className="marcadores">
-            <h1>Meus Marcadores</h1>
             {Lugares.map(lugar => (
                 <div className="marcadores_listados" key={lugar.id}>
                     <img src={Images.fotoPerfil} style={{height: "5vh"}} alt="" />

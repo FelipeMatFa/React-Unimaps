@@ -1,15 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './App.css';
-import Home from './pages/Home';
-import Login from './pages/Login'
-import LangPage from './pages/langpage/LangPage';
-import Mapa from './pages/Mapa';
-import Chat from './pages/Chat';
-import Enem from './pages/Enem';
-import Cadastro from './pages/Cadastro';
-import Tarefas from './pages/Tarefas'
-import Perfil from './pages/Perfil';
-
+import { Home, Login, LangPage, Mapa, Chat, Enem, Cadastro, Tarefas, Perfil } from './pages';
 import Modal from './utils/Modal'
 
 function App() {

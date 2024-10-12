@@ -1,10 +1,9 @@
 .marcadores{
-    margin: 5vh 5vw;
     display: flex;
     flex-direction: column;
-    padding: 10vh 1v;
+    overflow: auto;
+    height: 60vh;
     width: 20vw;
-    /* background-color: rgb(145, 145, 145); */
     gap: 10px;
 }
 
