@@ -1,4 +1,5 @@
 // Bibliotecas externas
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { Icon } from 'leaflet';
@@ -13,12 +14,15 @@ import Modal from '../utils/Modal';
 
 // Main component
 const MyMap = ({ position, loading }) => {
+  const [marcadores, setMarcadores] = useState([]);
+  
   const getMarcadores = async () => {
     try {
       const id = parseInt(sessionStorage.getItem('id'));
       const response = await axios.get(`http://localhost:3001/api/listarLugaresMapa?id=${id}`);
       if (response.data.success) {
-        console.log(response.data.data);
+        setMarcadores(response.data.data)
+        
       } else {
         alert(response.data.message);
       }
@@ -27,6 +31,11 @@ const MyMap = ({ position, loading }) => {
       alert("Ocorreu um erro ao carregar os marcadores.");
     }
   };
+
+  useEffect(() => {
+    getMarcadores();
+  }, []);
+  
 
   if (loading) {
     return <div style={
@@ -49,6 +58,7 @@ const MyMap = ({ position, loading }) => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
+        
         <Marker 
           position={position}
           icon={
@@ -60,17 +70,33 @@ const MyMap = ({ position, loading }) => {
               iconAnchor: [12, 41]
             })
           }
-        >
-          <Popup>
-            Sua localização
-          </Popup>
-        </Marker>
+        />
+        
+        {marcadores.map(marcador => (
+          <Marker
+            key={marcador.id} // Use um identificador único para a chave
+            position={[parseFloat(marcador.latitude), parseFloat(marcador.longitude)]}
+            icon={new Icon({
+              iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
+              iconUrl: require("leaflet/dist/images/marker-icon.png"),
+              shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
+              iconSize: [25, 41],
+              iconAnchor: [12, 41]
+            })}
+          >
+            <Popup>
+              {marcador.titulo}
+            </Popup>
+          </Marker>
+        ))}
       </MapContainer>
 
       <section className='primeira-div_mapa_primeira-sessao'>
         <h1>Meus Marcadores</h1>
         <ListarMarcadores/>
-        <Modal/>
+        <Modal
+          localizacao={position}
+        />
       </section>
     </div>
   );

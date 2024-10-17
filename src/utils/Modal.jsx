@@ -4,7 +4,7 @@ import Modal from './TelaModal';
 // Componentes
 import ButtonMarcadores from '../components/ButtonMarcadores';
 
-const App = ({recarregar}) => {
+const App = ({recarregar, localizacao}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [titulo, setTitulo] = useState(''); 
@@ -42,7 +42,7 @@ const App = ({recarregar}) => {
           value={descricao}
           onChange={(e) => setDescricao(e.target.value)}
         />
-        <ButtonMarcadores titulo={titulo} descricao={descricao}/>
+        <ButtonMarcadores titulo={titulo} descricao={descricao} localizacao={localizacao}/>
       </Modal>
     </div>
   );

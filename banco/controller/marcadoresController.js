@@ -4,8 +4,8 @@ async function marcarLugar(request, response){
     const params = Array(
         request.body.titulo,
         request.body.descricao,
-        request.body.suaLatitude,
-        request.body.suaLongitude,
+        request.body.latitude,
+        request.body.longitude,
         request.body.id
     );
 
