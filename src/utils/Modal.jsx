@@ -42,7 +42,7 @@ const App = ({recarregar, localizacao}) => {
           value={descricao}
           onChange={(e) => setDescricao(e.target.value)}
         />
-        <ButtonMarcadores titulo={titulo} descricao={descricao} localizacao={localizacao}/>
+        <ButtonMarcadores toggleModal={toggleModal} titulo={titulo} descricao={descricao} localizacao={localizacao}/>
       </Modal>
     </div>
   );

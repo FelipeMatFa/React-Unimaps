@@ -61,7 +61,32 @@ async function listarLugaresMapa(request, response){
     });
 }
 
+async function excluirMarcador(request, response) { 
+    const id = request.query.id; // Mudei de id_marcador para id
+    const params = [id];
+
+    const query = "DELETE FROM marcadores WHERE id = ?";
+
+    connection.query(query, params, (err, results) => {
+        if (err) {
+            return response.status(400).json({
+                success: false,
+                message: "Ops! Não deu...",
+                query: err.sql,
+                sqlMessage: err.sqlMessage
+            });
+        }
+        
+        response.status(201).json({
+            success: true,
+            message: "Sucesso!",
+            data: results
+        });
+    });
+}
+
 module.exports = {
     marcarLugar,
-    listarLugaresMapa
+    listarLugaresMapa,
+    excluirMarcador
 }

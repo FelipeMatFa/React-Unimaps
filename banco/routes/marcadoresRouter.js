@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { marcarLugar, listarLugaresMapa } = require('../controller/marcadoresController.js');
+const { marcarLugar, listarLugaresMapa, excluirMarcador } = require('../controller/marcadoresController.js');
 
 /**
  * @swagger
@@ -36,5 +36,22 @@ router.post('/marcarLugar', marcarLugar);
  *                   type: object
  */
 router.get('/listarLugaresMapa', listarLugaresMapa);
+
+/**
+ * @swagger
+ * /api/excluirMarcador:
+ *   delete:
+ *     summary: Excluir marcador do mapa
+ *     responses:
+ *        200:
+ *           description: Exclui um marcador específico do mapa
+ *           content:
+ *             application/json:
+ *               schema:
+ *                 type: array
+ *                 items:
+ *                   type: object
+ */
+router.delete('/excluirMarcador', excluirMarcador);
 
 module.exports = router;

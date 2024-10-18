@@ -7,11 +7,51 @@
     gap: 10px;
 }
 
-.marcadores_listados{
-    display: flex;
-    flex-direction: row;
+.marcadores_listados {
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "imagem conteudo botao"; 
     border-radius: 10px;
     border: 1px solid black;
     padding: 1vh;
     gap: 10px;
+}
+
+#marcadores_listados-img {
+    grid-area: imagem; 
+    height: 5vh;
+}
+
+.marcadores_listados_conteudo {
+    grid-area: conteudo; 
+    display: flex;
+    flex-direction: column;
+}
+
+#marcadores_listados_botao {
+    grid-area: botao; 
+    background-color: red;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-weight: 600;
+    height: 25px; 
+    width: 25px;
+}
+
+#marcadores_listados_conteudo_titulo{
+    font-weight: 600;
+    font-size: 14px;
+}
+
+#marcadores_listados_conteudo_descricao{
+    font-size: 12px;
+    width: 10vw;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

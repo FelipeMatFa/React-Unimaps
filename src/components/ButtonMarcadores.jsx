@@ -1,6 +1,7 @@
-function ButtonMarcadores({ titulo, descricao, localizacao }) {
+function ButtonMarcadores({ titulo, descricao, localizacao, toggleModal }) {
     const adicionarMarcador = async (e) => {
         e.preventDefault();
+        toggleModal();
 
         let latitude = localizacao[0];
         let longitude = localizacao[1];
