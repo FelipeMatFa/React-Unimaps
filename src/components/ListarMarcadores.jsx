@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import '../styles/ListarMarcadores.css';
 import Images from '../assets/image';
 
 function ListarMarcadores() {
     const [Lugares, setLugares] = useState([]);
+    const navigate = useNavigate();
 
     const excluirMarcador = async (id_marcador) => {
         try {
@@ -18,6 +20,10 @@ function ListarMarcadores() {
         } catch (error) {
             alert("Erro ao excluir o marcador: " + error);
         }
+    };
+
+    const visualizarMarcador = (id_marcador) => {
+        navigate(`/mapa/marcador?id=${id_marcador}`);
     };
 
     useEffect(() => {
@@ -45,7 +51,7 @@ function ListarMarcadores() {
             {Lugares.map(lugar => (
                 <div className="marcadores_listados" key={lugar.id}>
                     <img src={Images.fotoPerfil} id="marcadores_listados-img" alt="" />
-                    <section className="marcadores_listados_conteudo">
+                    <section className="marcadores_listados_conteudo" onClick={() => visualizarMarcador(lugar.id)}>
                         <p id="marcadores_listados_conteudo_titulo">{lugar.titulo}</p>
                         <p id="marcadores_listados_conteudo_descricao">{lugar.descricao}</p>   
                     </section>

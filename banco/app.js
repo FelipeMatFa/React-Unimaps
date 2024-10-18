@@ -1,15 +1,16 @@
 const express = require('express');
 const dotenv = require('dotenv').config();
+const cors = require('cors');
 const cadastroRouter = require('./routes/cadastroRouter');
-const loginRouter = require("./routes/loginRouter");
-const marcarLugar = require("./routes/marcadoresRouter");
+const loginRouter = require('./routes/loginRouter');
+const marcarLugar = require('./routes/marcadoresRouter');
 const chatRouter = require('./routes/chatRouter');
 const usuario = require('./routes/usuarioRouter');
+const uploadRouter = require('./routes/uploadRouter');
 
 const app = express();
 app.set('port', process.env.PORT || 3005);
 
-const cors = require('cors');
 app.use(express.json());
 app.use(cors());
 
@@ -18,7 +19,8 @@ app.use('/api', [
     loginRouter,
     marcarLugar,
     chatRouter,
-    usuario
+    usuario,
+    uploadRouter
 ]);
 
 module.exports = app;
