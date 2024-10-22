@@ -4,8 +4,6 @@ import axios from 'axios';
 import '../styles/FormCadastro.css';
 import images from '../assets/image'
 
-// import {ButtonMarcadores} from '../components/ButtonMarcadores'
-
 const baseURL = "http://localhost:3001/api/cadastro";
 
 function FormCadastro() {
@@ -24,13 +22,6 @@ function FormCadastro() {
 
         try {
             const response = await axios.post(baseURL, { email, nome, senha });
-            // fetch('http://localhost:3001/api/cadastro')
-            //     .then(res => {
-            //         return res.json();
-            //     })
-            //     .then(data =>{
-            //         console.log(data)
-            //     })
             if (response.data.success) {
                 console.log(response.data)
                 handleCadastro();
@@ -104,8 +95,6 @@ function FormCadastro() {
             >
                 Já possui conta? Clique aqui!
             </a>
-
-            {/* <ButtonMarcadores url="http://localhost:3001/api/cadastro"/>         */}
         </form>
     );
 }

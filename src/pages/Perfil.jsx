@@ -3,6 +3,9 @@ import FormDadosUsuario from '../utils/FormDadosUsuario';
 import '../styles/PerfilPage.css'
 import Images from '../assets/image'
 
+// import temporário
+import fotoPerfil from '../uploads/1729629781021.png'
+
 function Perfil(){
     return(
         <div>
@@ -15,7 +18,8 @@ function Perfil(){
                         <p>Foto perfil</p>
                         <img 
                             id='imagem-foto-perfil'
-                            src={Images.fotoPerfil} 
+                            // Caminho de imagem nula: Images.fotoPerfil
+                            src={fotoPerfil} 
                             alt="" 
                         />
                         <button>Upload de foto</button>
