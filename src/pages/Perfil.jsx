@@ -19,7 +19,7 @@ function Perfil(){
                         <img 
                             id='imagem-foto-perfil'
                             // Caminho de imagem nula: Images.fotoPerfil
-                            src={fotoPerfil} 
+                            src={fotoPerfil}
                             alt="" 
                         />
                         <button>Upload de foto</button>

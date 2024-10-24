@@ -1,12 +1,11 @@
 import Header from '../components/Header'
-import Enem2023 from '../assets/pdf/enem2023.pdf'
+import ListaRedacoes from '../components/ListaRedacoes'
 
 function EnemPage(){
     return(
-        <div>
+        <div style={{backgroundColor: "#ABC7FF", height: "100vh"}}>
             <Header></Header>
-            <embed src={Enem2023} type="application/pdf" width="1300px" height="830px" />
-            {/* Colocar opição ver resultados = gabarito da prova do enem */}
+            <ListaRedacoes />
         </div>
         
     )
