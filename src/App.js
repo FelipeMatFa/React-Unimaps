@@ -1,5 +1,7 @@
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
-import { Home, Login, LangPage, Mapa, Chat, Enem, Cadastro, Tarefas, Perfil, FileUpload } from './pages';
+import { Home, Login, LangPage, Mapa, Chat, Enem, Cadastro, Tarefas, Perfil, FileUpload } from './pages/Zindex';
+
+import Redacao from './components/Prova'
 
 function App() {
   const autenticado = sessionStorage.getItem('id');
@@ -20,6 +22,7 @@ function App() {
             <Route path='/home/perfil' element={<Perfil />} />
             <Route path='/tarefas' element={<Tarefas />} />
             <Route path='/FileUpload' element={<FileUpload />} />
+            <Route path='/enem/redacao' element={<Redacao />} />
             <Route path='*' element={<Navigate to="/home" />} />
           </>
         ) : (

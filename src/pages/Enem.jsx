@@ -1,11 +1,12 @@
 import Header from '../components/Header'
-import ListaRedacoes from '../components/ListaRedacoes'
+import ListaProvas from '../components/ListaProvas'
+import '../styles/Enem.css'
 
 function EnemPage(){
     return(
-        <div style={{backgroundColor: "#ABC7FF", height: "100vh"}}>
+        <div className="fundo">
             <Header></Header>
-            <ListaRedacoes />
+            <ListaProvas />
         </div>
         
     )

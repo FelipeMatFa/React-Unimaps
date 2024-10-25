@@ -1,0 +1,45 @@
+/* Enem.jsx */
+.fundo{
+    background-color: #ABC7FF;
+}
+
+/* ListaProvas.jsx */
+.Redacoes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 4vh 4vw;
+    gap: 10px;
+}
+
+#titulo{
+    font-size: 2.5em;
+}
+
+.Redacoes_div{
+    padding: 3vh 14vw;
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+/* Prova.jsx */
+#button-voltar{
+    position: fixed; 
+    left: 50%;   
+    transform: translateX(-50%); 
+    top: 90%;       
+    z-index: 1000; 
+    padding: 2vh 4vw;
+    font-size: 1em;
+    font-weight: 600;
+    color: white;
+    background-color: red;
+    border: none;
+}
+
+#embed-da-prova{
+    height: 100vh;
+    width: 100%;
+}
