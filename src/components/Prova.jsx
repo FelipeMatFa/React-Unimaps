@@ -20,7 +20,7 @@ function VisualizarProva() {
             >
                 Sair
             </button>
-            <h1>Visualizando Redação ENEM - {ano}</h1>
+            <h1 id="h1-status">Visualizando Redação ENEM - {ano}</h1>
             {prova ? (
                 <embed id="embed-da-prova" src={prova} type="application/pdf" />
             ) : (

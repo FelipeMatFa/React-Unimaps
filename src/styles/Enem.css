@@ -24,6 +24,10 @@
     font-weight: 600;
 }
 
+#Redacoes_div_paragrafo{
+    font-size: 20px;
+}
+
 /* Prova.jsx */
 #button-voltar{
     position: fixed; 
@@ -39,7 +43,112 @@
     border: none;
 }
 
+#h1-status{
+    font-size: 22px;
+}
+
 #embed-da-prova{
     height: 100vh;
     width: 100%;
+}
+
+
+@media screen and (min-width: 400px) and (max-width: 700px){
+    .Redacoes{
+        margin: 4vh 4vw;
+        gap: 10px;
+    }
+
+    #titulo{
+        font-size: 1.5em;
+    }
+
+    .Redacoes_div{
+        padding: 2vh 12vw;
+        border-radius: 5px;
+    }
+
+    #Redacoes_div_paragrafo{
+        font-size: 14px;
+    }    
+
+    #button-voltar{    
+        padding: 2vh 6vw;
+        font-size: .6em;
+    }
+
+    #h1-status{
+        font-size: 14px;
+    }
+
+    #embed-da-prova{
+        height: 100vh;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 701px) and (max-width: 900px){
+    .Redacoes{
+        margin: 4vh 4vw;
+        gap: 10px;
+    }
+
+    #titulo{
+        font-size: 1.7em;
+    }
+
+    .Redacoes_div{
+        padding: 3vh 13vw;
+    }
+
+    #Redacoes_div_paragrafo{
+        font-size: 16px;
+    }    
+
+    #button-voltar{    
+        padding: 2.5vh 6vw;
+        font-size: .8em;
+    }
+
+    #h1-status{
+        font-size: 16px;
+    }
+
+    #embed-da-prova{
+        height: 100vh;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 901px) and (max-width: 1400px){
+    .Redacoes{
+        margin: 4vh 4vw;
+        gap: 10px;
+    }
+
+    #titulo{
+        font-size: 1.9em;
+    }
+
+    .Redacoes_div{
+        padding: 4vh 14vw;
+    }
+
+    #Redacoes_div_paragrafo{
+        font-size: 18px;
+    }    
+
+    #button-voltar{    
+        padding: 3vh 4vw;
+        font-size: 1em;
+    }
+
+    #h1-status{
+        font-size: 18px;
+    }
+
+    #embed-da-prova{
+        height: 100vh;
+        width: 100%;
+    }
 }

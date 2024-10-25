@@ -14,7 +14,7 @@ function ListaProvas() {
             <h1 id='titulo'>Provas do ENEM</h1>
             {provasArray.map((prova, index) => (
                 <a className="Redacoes_div" key={index} onClick={() => visualizarProva(prova, 2023 - index)}>
-                    <p>Arquivo ENEM - {2023 - index}</p>
+                    <p id="Redacoes_div_paragrafo">Arquivo ENEM - {2023 - index}</p>
                 </a>
             ))}
         </ul>
