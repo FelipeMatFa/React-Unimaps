@@ -27,10 +27,35 @@ async function login(request, response) {
           })
       }
     }
-  })
-  
+  }) 
 }
 
+async function consultarPerfis(request, response) { 
+  const query = "SELECT foto, nome FROM usuario WHERE id >= 1 and id <= 5";
+
+  connection.query(query, (err, results) => {    
+      if (results && results.length > 0){
+        response
+          .status(200)
+          .json({
+            success: true,
+            message: "Sucesso!",
+            data: results
+          })
+      } else {
+        response
+          .status(400)
+          .json({
+            success: false,
+            message: "Sem Sucesso!",
+            data: err
+          })
+      }
+    })
+}
+
+
 module.exports = {
-  login
+  login,
+  consultarPerfis
 }

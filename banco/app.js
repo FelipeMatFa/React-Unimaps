@@ -7,6 +7,7 @@ const marcarLugar = require('./routes/marcadoresRouter');
 const chatRouter = require('./routes/chatRouter');
 const usuario = require('./routes/usuarioRouter');
 const uploadRouter = require('./routes/uploadRouter');
+const postsRouter = require('./routes/postsRouter');
 
 const app = express();
 app.set('port', process.env.PORT || 3005);
@@ -20,7 +21,8 @@ app.use('/api', [
     marcarLugar,
     chatRouter,
     usuario,
-    uploadRouter
+    uploadRouter,
+    postsRouter
 ]);
 
 module.exports = app;

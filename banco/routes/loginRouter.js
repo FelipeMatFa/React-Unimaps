@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { login } = require('../controller/loginController');
+const { login, consultarPerfis } = require('../controller/loginController');
 
 /**
  * @swagger
@@ -19,5 +19,22 @@ const { login } = require('../controller/loginController');
  *                   type: object
  */
 router.post("/login", login);
+
+/**
+ * @swagger
+ * /api/consultarperfis:
+ *   post:
+ *     summary: Consulta dados de outros usuários
+ *     responses:
+ *        201:
+ *           description: Consulta dados de nome e foto do usuário
+ *           content:
+ *             application/json:
+ *               schema:
+ *                 type: array
+ *                 items:
+ *                   type: object
+ */
+router.get("/consultarperfis", consultarPerfis);
 
 module.exports = router;
