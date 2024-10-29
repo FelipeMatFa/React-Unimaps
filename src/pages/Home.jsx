@@ -3,6 +3,7 @@ import "../styles/Home.css";
 import PerfisComponent from '../components/PerfisComponent';
 import { React, useEffect, useState } from 'react';
 import axios from 'axios';
+import ButtonPost from '../components/ButtonPost';
 
 function Home() {
     const [Posts, setPosts] = useState([]);
@@ -71,7 +72,7 @@ function Home() {
                 ))}
             </section>
             
-            <button id='main_button-post'>+</button>
+            <ButtonPost/>
         </div>
     );
 }

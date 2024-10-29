@@ -178,3 +178,67 @@
 #perfis_listados_paragrafo {
     font-size: 0.8em;
 }
+
+/* ButtonPost.jsx */
+
+.modal-div{
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    position: relative;
+    gap: 10px;
+}
+
+.modal-content_header{
+    
+    display: flex;
+    flex-direction: row;
+    background-color:white;
+    
+}
+
+.modal-content_header-primeira-sessao{
+    color: white;
+}
+
+#close-button{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    border: none;
+    color: red;
+    background-color: white;
+}
+
+.modal-content_form{
+    display: flex;
+    flex-direction: column;
+}
+
+#modal-content_form-input-file{
+    padding: 4vh;
+}
+
+#modal-content_form-input-text{
+    height: 10vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}

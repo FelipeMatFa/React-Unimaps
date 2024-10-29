@@ -4,7 +4,7 @@ const connection = require('./config/db');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'uploads/');
+        cb(null, 'public/uploads');
     },
     filename: (req, file, cb) => {
         cb(null, Date.now() + path.extname(file.originalname));
@@ -20,7 +20,7 @@ async function cadastrarUser(req, res) {
 
     const caminho = req.file.path;
 
-    const query = "INSERT INTO linkredacoes(caminho) VALUES(?)";
+    const query = "INSERT INTO post(imagem) VALUE(?)";
 
     connection.query(query, [caminho], (err, results) => {
         if (err) {

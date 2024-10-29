@@ -23,6 +23,35 @@ async function selecionarPosts(request, response) {
     });
 }
 
+async function criarPosts(request, response) {
+    const params = Array(
+        request.body.imagem,
+        request.body.titulo,
+    );
+
+    const query = "INSERT INTO post(imagem,titulo) VALUES(?,?)";
+
+    connection.query(query, (err, results) => {
+        if (results && results.length > 0) {
+            response
+                .status(200)
+                .json({
+                    success: true,
+                    message: "Sucesso!",
+                    data: results
+                });
+        } else {
+            response
+                .status(400)
+                .json({
+                    success: false,
+                    message: "Erro ao criar post!",
+                });
+        }
+    });
+}
+
 module.exports = {
     selecionarPosts,
+    criarPosts,
 }
