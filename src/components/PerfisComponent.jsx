@@ -11,7 +11,7 @@ function PerfisComponent() {
                 const response = await axios.get(`http://localhost:3001/api/consultarperfis`);
                 
                 if (response.data.success) {
-                    console.log(response.data.data);
+                    // console.log(response.data.data);
                     setPerfis(response.data.data);
                 } else {
                     alert(response.data.message);

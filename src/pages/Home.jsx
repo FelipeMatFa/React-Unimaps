@@ -1,21 +1,19 @@
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Header from '../components/Header';
 import "../styles/Home.css";
 import PerfisComponent from '../components/PerfisComponent';
-import { React, useEffect, useState } from 'react';
-import axios from 'axios';
 import ButtonPost from '../components/ButtonPost';
 
 function Home() {
     const [Posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(true); // Estado de loading
     const autenticado = sessionStorage.getItem('id');
 
     useEffect(() => {
         const getPosts = async () => {
             try {
                 const response = await axios.get(`http://localhost:3001/api/posts`);
-                
-                console.log(response.data);
-
                 if (response.data.success && Array.isArray(response.data.data)) {
                     setPosts(response.data.data);
                 } else {
@@ -23,6 +21,9 @@ function Home() {
                 }
             } catch (error) {
                 console.error("Erro ao carregar conteúdo:", error);
+                alert("Ocorreu um erro ao carregar os posts.");
+            } finally {
+                setLoading(false); // Finaliza o loading
             }
         };
 
@@ -32,7 +33,6 @@ function Home() {
     return (
         <div className='main'>
             <Header />
-
             <h1 id="main_paragrafo">
                 Bem-vindo {sessionStorage.getItem('userName')}!
             </h1>
@@ -41,38 +41,42 @@ function Home() {
                 <PerfisComponent />
             </section>
             
-            <hr id='main_linha'></hr>
+            <hr id='main_linha' />
 
             <section className='posts'>
-                {Array.isArray(Posts) && Posts.map(Post => (
-                    <div className="posts_listados" key={Post.id}>
-                        <section className='posts_listados_cabecalho'>
-                            <div className='posts_listados_cabecalho_usuario'>
-                                <img 
-                                    className="user-avatar" 
-                                    src={Post.usuario_foto_perfil}
-                                    alt="Foto de perfil"
-                                />
-                                <p className="username">{Post.usuario_nome}</p>
-                            </div>
-                            
-                            <div className="posts_listados_cabecalho_botoes">
-                                <button id="botao-seguir">Seguir</button>
-                                {parseInt(autenticado) === parseInt(Post.id_usuario) ? (
-                                    <button id="botao_excluir">X</button>
-                                ) : (
-                                    <button id="botao-info">:</button>
-                                )}
-                            </div>
-                        </section>
+                {loading ? ( // Exibe loading enquanto carrega
+                    <p>Carregando posts...</p>
+                ) : (
+                    Array.isArray(Posts) && Posts.map(Post => (
+                        <div className="posts_listados" key={Post.id}>
+                            <section className='posts_listados_cabecalho'>
+                                <div className='posts_listados_cabecalho_usuario'>
+                                    <img 
+                                        className="user-avatar" 
+                                        src={Post.usuario_foto_perfil}
+                                        alt="Foto de perfil"
+                                    />
+                                    <p className="username">{Post.usuario_nome}</p>
+                                </div>
+                                
+                                <div className="posts_listados_cabecalho_botoes">
+                                    <button id="botao-seguir">Seguir</button>
+                                    {parseInt(autenticado) === parseInt(Post.id_usuario) ? (
+                                        <button id="botao_excluir">X</button>
+                                    ) : (
+                                        <button id="botao-info">:</button>
+                                    )}
+                                </div>
+                            </section>
 
-                        <img src={Post.imagem} className="post-image" alt="" />
-                        <p className="post-title">{Post.titulo}</p>
-                    </div>
-                ))}
+                            <img src={Post.imagem} className="post-image" alt="" />
+                            <p className="post-title">{Post.titulo}</p>
+                        </div>
+                    ))
+                )}
             </section>
             
-            <ButtonPost/>
+            <ButtonPost />
         </div>
     );
 }

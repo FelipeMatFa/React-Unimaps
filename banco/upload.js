@@ -18,11 +18,11 @@ async function cadastrarUser(req, res) {
         return res.status(400).json({ success: false, message: 'Nenhum arquivo foi enviado.' });
     }
 
-    const caminho = req.file.path;
+    const imagePath = '/uploads/' + req.file.filename;
+    const params = [imagePath, req.body.titulo, req.body.id];
 
-    const query = "INSERT INTO post(imagem) VALUE(?)";
-
-    connection.query(query, [caminho], (err, results) => {
+    const query = "INSERT INTO post(imagem, titulo, id_usuario) VALUES (?, ?, ?)";
+    connection.query(query, params, (err, results) => {
         if (err) {
             return res.status(400).json({
                 success: false,
@@ -31,16 +31,18 @@ async function cadastrarUser(req, res) {
                 sqlMessage: err.sqlMessage,
             });
         }
-
         res.status(201).json({
             success: true,
             message: "Sucesso!",
-            data: results,
+            data: {
+                insertId: results.insertId,
+                imagePath: imagePath,
+            },
         });
     });
 }
 
 module.exports = {
-    upload: upload,
+    upload,
     cadastrarUser,
 };

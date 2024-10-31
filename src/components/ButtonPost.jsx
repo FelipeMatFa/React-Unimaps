@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function Modal({ isOpen, onClose, titulo, setTitulo, file, setFile, postPublicacao }) {
+function Modal({ isOpen, onClose, titulo, setTitulo, file, setFile, consultarModal }) {
     if (!isOpen) return null;
 
     return (
         <div className="modal-div">
             <div className="modal-content">
-                <button onClick={onClose} id="close-button">X</button>    
+                <button onClick={onClose} id="close-button">X</button>
                 <h1>Nova publicação</h1>
-                <form className="modal-content_form" onSubmit={postPublicacao}>
+                <form className="modal-content_form" onSubmit={consultarModal}>
                     <input
                         id="modal-content_form-input-file"
                         type="file"
@@ -24,7 +24,7 @@ function Modal({ isOpen, onClose, titulo, setTitulo, file, setFile, postPublicac
                         onChange={(e) => setTitulo(e.target.value)}
                         required
                     />
-                    <input type="submit" name="" id="" />
+                    <input type="submit" value="Publicar" />
                 </form>
             </div>
         </div>
@@ -37,7 +37,11 @@ function ButtonPost() {
     const [isModalOpen, setModalOpen] = useState(false);
 
     const handleOpenModal = () => setModalOpen(true);
-    const handleCloseModal = () => setModalOpen(false);
+    const handleCloseModal = () => {
+        setModalOpen(false);
+        setTitulo("");
+        setFile(null);
+    };
 
     const consultarModal = async (e) => {
         e.preventDefault();
@@ -50,6 +54,8 @@ function ButtonPost() {
         try {
             const formData = new FormData();
             formData.append("file", file);
+            formData.append("titulo", titulo);
+            formData.append("id", sessionStorage.getItem("id"));
 
             const response = await axios.post('http://localhost:3001/api/upload', formData, {
                 headers: {
@@ -57,10 +63,10 @@ function ButtonPost() {
                 },
             });
 
-            if (response.data.success) {
+            if (response.data.data) {
                 console.log("Arquivo enviado com sucesso!");
-                console.log(response.data)
-                postPublicacao(response.data.data);
+                console.log(response.data.data.imagePath);
+                await postPublicacao(titulo, response.data.data.imagePath);
             } else {
                 alert(response.data.message || "Erro inesperado.");
             }
@@ -69,9 +75,15 @@ function ButtonPost() {
         }
     };
 
-    const postPublicacao = async (caminhoFile) => {
+    const postPublicacao = async (titulo, imagePath) => {
+        const id_usuario = sessionStorage.getItem('id');
+
         try {
-            const response = await axios.post('http://localhost:3001/api/criarposts', { titulo, caminhoFile }, {
+            const response = await axios.post('http://localhost:3001/api/criarposts', {
+                titulo,
+                imagem: imagePath, // Nome esperado pelo backend
+                id_usuario,
+            }, {
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -79,11 +91,12 @@ function ButtonPost() {
 
             if (response.data.success) {
                 console.log("Publicação criada com sucesso!");
+                handleCloseModal(); // Fechar o modal após a publicação
             } else {
                 alert(response.data.message || "Erro inesperado na estrutura da resposta.");
             }
         } catch (error) {
-            console.error("Erro ao fazer a postagem:", error);
+            console.error("Erro ao fazer a postagem:", error.response ? error.response.data : error.message);
         }
     };
 
@@ -96,7 +109,7 @@ function ButtonPost() {
                 setTitulo={setTitulo} 
                 file={file} 
                 setFile={setFile} 
-                postPublicacao={consultarModal}
+                consultarModal={consultarModal} 
             />
             <button id="main_button-post" onClick={handleOpenModal}>
                 +
