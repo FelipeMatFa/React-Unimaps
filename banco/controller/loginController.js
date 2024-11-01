@@ -54,8 +54,39 @@ async function consultarPerfis(request, response) {
     })
 }
 
+async function consultarUser(request, response) { 
+  const query = "SELECT * from usuario where id = ?";
+  const param = request.query.id;
+
+  connection.query(query, [param], (err, results) => {    
+      if (err) {
+          console.error("Erro ao consultar o banco de dados:", err);
+          return response.status(500).json({
+              success: false,
+              message: "Erro interno no servidor",
+              error: err
+          });
+      }
+
+      if (results && results.length > 0) {
+          response.status(200).json({
+              success: true,
+              message: "Sucesso!",
+              data: results
+          });
+      } else {
+          response.status(404).json({
+              success: false,
+              message: "Usuário não encontrado!",
+              data: []
+          });
+      }
+  });
+}
+
 
 module.exports = {
   login,
-  consultarPerfis
+  consultarPerfis,
+  consultarUser
 }

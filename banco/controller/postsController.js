@@ -37,6 +37,36 @@ async function selecionarPosts(request, response) {
     });
 }
 
+async function selecionarPostsUsuario(request, response) {
+    const query = `
+        SELECT * FROM post WHERE id_usuario = ?;
+    `;
+
+    const param = request.body.id;
+    connection.query(query, [param], (err, results) => {
+        if (err) {
+            return response.status(500).json({
+                success: false,
+                message: "Erro ao buscar posts",
+                error: err.sqlMessage,
+            });
+        }
+
+        if (results && results.length > 0) {
+            response.status(200).json({
+                success: true,
+                message: "Sucesso!",
+                data: results,
+            });
+        } else {
+            response.status(404).json({
+                success: false,
+                message: "Nenhum post encontrado.",
+            });
+        }
+    });
+}
+
 async function criarPosts(request, response) {
     const { titulo, imagem, id_usuario } = request.body;
 
@@ -103,4 +133,5 @@ module.exports = {
     selecionarPosts,
     criarPosts,
     excluirPost,
+    selecionarPostsUsuario,
 };

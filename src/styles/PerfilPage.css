@@ -1,26 +1,81 @@
-.Div-dados-cadastro{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    padding: 10vh 1vw;
+/* ListarDados */
+.listar-usuario {
+    display: grid;
+    grid-template-columns: 33% 47% 20%;
+    /* align-items: center; */
+    gap: 10px; 
+    list-style: none; 
+    padding: 15vh 10vw;
 }
 
-#primeira-sessao_titulo{
-    font-size: 30px;
+
+#posts-usuario_foto-perfil{
+    height: 200px;
+    width: 200px;
+    border: 1px solid black;
+    border-radius: 100px;
 }
 
-.Div-dados-cadastro_primeira-sessao{
-    padding: 1vh;
-}
-
-.primeira-sessao_primeira-div{
+.listar-usuario_dados{
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-#imagem-foto-perfil{
-    height: 45vh;
-    width: 20vw;
+#dados_nome{
+    font-weight: 800;
+    font-size: 25px;
+}
+
+/* ListarPosts.jsx */
+
+.posts-usuario {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: start;
+    gap: 30px;
+}
+
+.posts-listados{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+    width: 80vw;
+    max-width: 350px;    
+    aspect-ratio: 1 / 1;  /* Mantém a proporção quadrada */
+    overflow: hidden;
+}
+
+.image-container img {
+    display: block;
+    width: 100%;          /* Ocupa toda a largura do contêiner */
+    height: 100%;         /* Ocupa toda a altura do contêiner */
+    object-fit: cover;
+}
+
+.image-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.image-container:hover .image-text {
+    opacity: 1;
 }

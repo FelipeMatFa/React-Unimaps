@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { login, consultarPerfis } = require('../controller/loginController');
+const { login, consultarPerfis, consultarUser } = require('../controller/loginController');
 
 /**
  * @swagger
@@ -36,5 +36,7 @@ router.post("/login", login);
  *                   type: object
  */
 router.get("/consultarperfis", consultarPerfis);
+
+router.get("/consultaruser", consultarUser)
 
 module.exports = router;
