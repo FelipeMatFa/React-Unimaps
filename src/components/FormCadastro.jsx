@@ -10,6 +10,8 @@ function FormCadastro() {
     const [email, setEmail] = useState("");
     const [nome, setNome] = useState("");
     const [senha, setSenha] = useState("");
+
+    const foto = '/assets/user-ico.png'
     
     const navigate = useNavigate();
 
@@ -21,7 +23,7 @@ function FormCadastro() {
         e.preventDefault();
 
         try {
-            const response = await axios.post(baseURL, { email, nome, senha });
+            const response = await axios.post(baseURL, { email, nome, senha, foto });
             if (response.data.success) {
                 console.log(response.data)
                 handleCadastro();

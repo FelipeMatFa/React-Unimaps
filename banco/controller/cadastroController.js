@@ -4,10 +4,11 @@ async function cadastrarUser(request, response){
     const params = Array(
         request.body.nome,
         request.body.senha,
-        request.body.email
+        request.body.email,
+        request.body.foto
     );
 
-    const query = "INSERT INTO usuario(nome,senha,email) VALUES(?,?,?)";
+    const query = "INSERT INTO usuario(nome,senha,email,foto) VALUES(?,?,?,?)";
 
     connection.query(query, params, (err, results) => {
         if(results){

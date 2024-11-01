@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Header from '../components/Header';
+
+// CSS
 import "../styles/Home.css";
+
+// COMPONENTES
+import Header from '../components/Header';
 import PerfisComponent from '../components/PerfisComponent';
-import ButtonPost from '../components/ButtonPost';
+import ButtonPost from '../components/HomeButtonPost';
+import ButtonRemove from '../components/ButtonRemove';
 
 function Home() {
-    const [Posts, setPosts] = useState([]);
-    const [loading, setLoading] = useState(true); // Estado de loading
+    const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(true);
     const autenticado = sessionStorage.getItem('id');
 
     useEffect(() => {
@@ -23,12 +28,16 @@ function Home() {
                 console.error("Erro ao carregar conteúdo:", error);
                 alert("Ocorreu um erro ao carregar os posts.");
             } finally {
-                setLoading(false); // Finaliza o loading
+                setLoading(false);
             }
         };
 
         getPosts();
     }, []);
+
+    const handlePostRemove = (id) => {
+        setPosts((prevPosts) => prevPosts.filter(post => post.id !== id));
+    };
 
     return (
         <div className='main'>
@@ -44,15 +53,16 @@ function Home() {
             <hr id='main_linha' />
 
             <section className='posts'>
-                {loading ? ( // Exibe loading enquanto carrega
+                {loading ? (
                     <p>Carregando posts...</p>
                 ) : (
-                    Array.isArray(Posts) && Posts.map(Post => (
+                    Array.isArray(posts) && posts.map(Post => (
                         <div className="posts_listados" key={Post.id}>
                             <section className='posts_listados_cabecalho'>
                                 <div className='posts_listados_cabecalho_usuario'>
                                     <img 
                                         className="user-avatar" 
+                                        
                                         src={Post.usuario_foto_perfil}
                                         alt="Foto de perfil"
                                     />
@@ -60,9 +70,11 @@ function Home() {
                                 </div>
                                 
                                 <div className="posts_listados_cabecalho_botoes">
-                                    <button id="botao-seguir">Seguir</button>
                                     {parseInt(autenticado) === parseInt(Post.id_usuario) ? (
-                                        <button id="botao_excluir">X</button>
+                                        <ButtonRemove
+                                            id_post={Post.id}
+                                            onPostRemove={handlePostRemove}
+                                        />
                                     ) : (
                                         <button id="botao-info">:</button>
                                     )}

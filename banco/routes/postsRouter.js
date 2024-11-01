@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { selecionarPosts, criarPosts } = require('../controller/postsController');
+const { selecionarPosts, criarPosts, excluirPost } = require('../controller/postsController');
 
 /**
  * @swagger
@@ -26,15 +26,38 @@ router.get('/posts', selecionarPosts);
  *   post:
  *     summary: Crie um post
  *     responses:
- *        200:
- *           description: Insere dados de titulo e caminho da imagem para a tabela posts
+ *        201:
+ *           description: Insere dados de título e caminho da imagem para a tabela posts
  *           content:
  *             application/json:
  *               schema:
- *                 type: array
- *                 items:
- *                   type: object
+ *                 type: object
+ *                 properties:
+ *                   success:
+ *                     type: boolean
+ *                   message:
+ *                     type: string
  */
 router.post('/criarposts', criarPosts);
+
+/**
+ * @swagger
+ * /api/excluirposts:
+ *   delete:
+ *     summary: Excluir um post
+ *     responses:
+ *        201:
+ *           description: Deleta dados da tabela post pelo id do post
+ *           content:
+ *             application/json:
+ *               schema:
+ *                 type: object
+ *                 properties:
+ *                   success:
+ *                     type: boolean
+ *                   message:
+ *                     type: string
+ */
+router.delete('/excluirposts', excluirPost)
 
 module.exports = router;

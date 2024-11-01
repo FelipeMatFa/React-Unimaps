@@ -11,35 +11,39 @@ async function selecionarPosts(request, response) {
         usuario.foto AS usuario_foto_perfil 
     FROM post 
     JOIN usuario ON post.id_usuario = usuario.id
-    -- WHERE post.id_usuario = ?  -- Descomente e adicione o valor se precisar filtrar por id_usuario
-`;
+    `;
+
     connection.query(query, (err, results) => {
+        if (err) {
+            return response.status(500).json({
+                success: false,
+                message: "Erro ao buscar posts",
+                error: err.sqlMessage,
+            });
+        }
+
         if (results && results.length > 0) {
-            response
-                .status(200)
-                .json({
-                    success: true,
-                    message: "Sucesso!",
-                    data: results
-                });
+            response.status(200).json({
+                success: true,
+                message: "Sucesso!",
+                data: results,
+            });
         } else {
-            response
-                .status(400)
-                .json({
-                    success: false,
-                    message: "Posts encontrados!",
-                });
+            response.status(404).json({
+                success: false,
+                message: "Nenhum post encontrado.",
+            });
         }
     });
 }
 
 async function criarPosts(request, response) {
-    console.log(request.body); // Verificar os dados recebidos
+    const { titulo, imagem, id_usuario } = request.body;
 
     const params = [
-        request.body.imagem,
-        request.body.titulo,
-        request.body.id_usuario
+        imagem,
+        titulo,
+        id_usuario
     ];
 
     const query = "INSERT INTO post(imagem, titulo, id_usuario) VALUES (?, ?, ?)";
@@ -49,7 +53,7 @@ async function criarPosts(request, response) {
             return response.status(400).json({
                 success: false,
                 message: "Erro ao criar post!",
-                error: err.sqlMessage, // Retornar mensagem de erro
+                error: err.sqlMessage,
             });
         }
 
@@ -70,8 +74,33 @@ async function criarPosts(request, response) {
     });
 }
 
+async function excluirPost(request, response) { 
+    const id = request.query.id;
+    const params = [id];
+
+    const query = "DELETE FROM post WHERE id = ?";
+
+    connection.query(query, params, (err, results) => {
+        if (err) {
+            return response.status(400).json({
+                success: false,
+                message: "Ops! Não deu...",
+                query: err.sql,
+                sqlMessage: err.sqlMessage
+            });
+        }
+        
+        response.status(201).json({
+            success: true,
+            message: "Sucesso!",
+            data: results
+        });
+    });
+}
+
 
 module.exports = {
     selecionarPosts,
     criarPosts,
-}
+    excluirPost,
+};

@@ -26,14 +26,18 @@ function PerfisComponent() {
     }, []);
 
     return (
-        <div className='main_navegacao_perfis'>
-            {Perfis.map(Perfil => (
-                <div className="perfis_listados" key={Perfil.id}>
-                    <img src={Perfil.foto} id="perfis_listados_img" alt="" />
-                    <p id="perfis_listados_paragrafo">{Perfil.nome}</p>
-                </div>
-            ))}
+        <div className='navegacao_perfis'>
+            <ul className='lista_perfis'>
+                {Perfis.map((perfil) => (
+                    <li className="perfil_item" key={perfil.id}>
+                        <img src={perfil.foto} className="perfil_imagem" alt="" />      
+                        <p className="perfil_nome">{perfil.nome}</p>
+                    </li>
+                ))}
+            </ul>
         </div>
+
+
     );
 }
 

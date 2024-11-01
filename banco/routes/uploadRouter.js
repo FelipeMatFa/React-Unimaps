@@ -1,5 +1,5 @@
 const express = require('express');
-const { upload, cadastrarUser } = require('../upload');
+const { upload } = require('../upload');
 
 const router = express.Router();
 
@@ -9,23 +9,37 @@ const router = express.Router();
  *   post:
  *     summary: Faz upload de arquivo
  *     responses:
- *       200:
- *         description: Insere dentro da pasta uploads arquivos e insere no banco a rota dos arquivos
+ *       201:
+ *         description: Retorna o caminho do arquivo enviado
  *         content:
  *           application/json:
  *             schema:
  *               type: object
  *               properties:
+ *                 success:
+ *                   type: boolean
  *                 message:
  *                   type: string
- *                 file:
+ *                 data:
  *                   type: object
  *                   properties:
- *                     filename:
- *                       type: string
- *                     path:
+ *                     imagePath:
  *                       type: string
  */
-router.post('/upload', upload.single('file'), cadastrarUser);
+router.post('/upload', upload.single('file'), (req, res) => {
+    if (!req.file) {
+        return res.status(400).json({ success: false, message: 'Nenhum arquivo foi enviado.' });
+    }
+
+    const imagePath = '/uploads/' + req.file.filename;
+
+    res.status(201).json({
+        success: true,
+        message: "Upload realizado com sucesso!",
+        data: {
+            imagePath: imagePath,
+        },
+    });
+});
 
 module.exports = router;
