@@ -1,13 +1,22 @@
+/* Perfil.jsx */
+
+.main-usuario{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10vh 20vh 4vh 20vh;
+    gap: 50px;
+}
+
 /* ListarDados */
 .listar-usuario {
     display: grid;
-    grid-template-columns: 33% 47% 20%;
-    /* align-items: center; */
+    justify-content: center;
+    grid-template-columns: 30% 50% 20%;
     gap: 10px; 
     list-style: none; 
-    padding: 15vh 10vw;
+    padding: 2vh 6vh 6vh 10vh;
 }
-
 
 #posts-usuario_foto-perfil{
     height: 200px;
@@ -22,17 +31,51 @@
     gap: 20px;
 }
 
+.listar-usuario_botoes{
+    gap: 20px;
+}
+
 #dados_nome{
     font-weight: 800;
     font-size: 25px;
 }
+
+#botao-seguir{
+    background-color: #0095f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+#botao-seguir:hover{
+    background-color: #007bb1;
+}
+
+#botao-info{
+    background-color: #0095f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+#botao-info:hover{
+    background-color: #007bb1;
+}
+
 
 /* ListarPosts.jsx */
 
 .posts-usuario {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    /* justify-content: center; */
+    /* padding: 4vh 20vh 4vh 20vh; */
     align-content: start;
     gap: 30px;
 }
@@ -78,4 +121,128 @@
 
 .image-container:hover .image-text {
     opacity: 1;
+}
+
+#button-remove {
+    position: absolute;
+    top: 10px;    
+    right: 10px;
+    background-color: rgba(255, 0, 0, 0.8); 
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px; 
+    transition: background-color 0.3s ease;
+}
+
+#button-remove:hover {
+    background-color: rgba(255, 0, 0, 1);
+}
+
+/* PerfisComponent.jsx */
+.navegacao_perfis{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* Responsividade de largura de tela */
+@media (max-width: 1500px) {
+    .main-usuario {
+        padding: 8vh 15vh 4vh 15vh;
+    }
+    .listar-usuario {
+        grid-template-columns: 30% 50% 20%;
+    }
+    #posts-usuario_foto-perfil {
+        height: 180px;
+        width: 180px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .main-usuario {
+        padding: 8vh 10vh 4vh 10vh;
+    }
+    .listar-usuario {
+        grid-template-columns: 40% 60%;
+    }
+    #posts-usuario_foto-perfil {
+        height: 160px;
+        width: 160px;
+    }
+}
+
+@media (max-width: 900px) {
+    .main-usuario {
+        padding: 6vh 8vh 4vh 8vh;
+    }
+    .listar-usuario {
+        grid-template-columns: 50% 50%;
+        gap: 5px;
+    }
+    #posts-usuario_foto-perfil {
+        height: 140px;
+        width: 140px;
+    }
+    .posts-usuario {
+        gap: 20px;
+    }
+    .image-container {
+        width: 70vw;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 700px) {
+    .main-usuario {
+        padding: 4vh 5vh 4vh 5vh;
+    }
+    .listar-usuario {
+        grid-template-columns: 100%;
+        padding: 2vh;
+    }
+    .listar-usuario_dados {
+        gap: 15px;
+    }
+    #posts-usuario_foto-perfil {
+        height: 120px;
+        width: 120px;
+    }
+    .image-container {
+        width: 90vw;
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 300px) {
+    .main-usuario {
+        padding: 2vh 2vh 2vh 2vh;
+        gap: 30px;
+    }
+    .listar-usuario {
+        grid-template-columns: 100%;
+        gap: 5px;
+        padding: 0 2vh;
+    }
+    .listar-usuario_dados {
+        gap: 10px;
+    }
+    #posts-usuario_foto-perfil {
+        height: 100px;
+        width: 100px;
+    }
+    .image-container {
+        width: 100%;
+        max-width: 200px;
+    }
+    #botao-seguir, #botao-info {
+        font-size: 1rem;
+        padding: 8px 15px;
+    }
+    .image-text {
+        font-size: 12px;
+    }
 }

@@ -42,6 +42,7 @@ function ListarPosts() {
                         />
                         <span className="image-text">{post.titulo}</span>
                         <ButtonRemove 
+                            id="button-remove"
                             id_post={post.id}
                             onPostRemove={handlePostRemove}
                         />

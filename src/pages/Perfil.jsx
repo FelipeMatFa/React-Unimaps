@@ -5,14 +5,19 @@ import '../styles/PerfilPage.css'
 import ListarPosts from '../components/ListarPosts';
 import ListarDados from '../components/ListarDados';
 
+import PerfisComponent from '../components/PerfisComponent';
+
 function Perfil(){
     return(
         <div>
             <Header></Header>
-            <ListarDados/>
-
-            {/* <tr></tr> */}
-            <ListarPosts/>
+            <section className='main-usuario'>
+                <ListarDados/>
+                <PerfisComponent/>
+                <hr/>
+                <ListarPosts/>
+            </section>
+            
         </div>
         
     )

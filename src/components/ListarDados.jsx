@@ -43,9 +43,9 @@ function ListarPosts() {
                     help@unimaps.com.br <br></br>
                 </p>
             </div>
-            <div>
-                <button>Seguir</button>
-                <button>...</button>
+            <div className="listar-usuario_botoes">
+                <button id="botao-seguir">Seguir</button>
+                <button id="botao-info">...</button>
             </div>
         </ul>
     );
