@@ -1,6 +1,9 @@
-/* main{
+.main-chat{
+    display: flex;
+    flex-direction: column;
     padding: 10vh 4vw;
-} */
+    gap: 20px;
+}
 
 h2{
     font-size: 35px;
@@ -13,7 +16,7 @@ h2{
     grid-template-columns: 70% 30%;
     grid-template-rows: 40% 30%;
     gap: 20px;
-    /* grid-template-rows: .3fr .5fr; */
+    min-height: 70vh;
 }
 
 /* MAIN PRIMEIRA SESSAO */
@@ -25,6 +28,7 @@ h2{
     padding: 2vh 3vw;
     background-color: #E2E2E2;
     border-radius: 15px;
+    gap: 10px;
 }
 
 #primeira-sessao_paragrafo{
@@ -32,17 +36,20 @@ h2{
     font-weight: 600;
 }
 
-.primeira-sessao_estatisticas{
+.primeira-sessao_estatisticas {
     display: flex;
-    flex-direction: row;
-    overflow-x:scroll;
+    flex-wrap: wrap;
     gap: 10px;
+    overflow-x: auto; 
 }
 
 .primeira-sessao_estatisticas_div{
-    padding: .1vh 4vw;
+    padding: 0.5vh 2vw;
     border-radius: 10px;
     background-color: #C8C8C8;
+    flex-shrink: 0;
+    min-width: 150px;
+    word-wrap: break-word;
 }
 
 #primeira-sessao_div_paragrafo{
@@ -64,6 +71,7 @@ h2{
     padding: 2vh 3vw;
     background-color: #E2E2E2;
     border-radius: 15px;
+    gap: 10px;
 }
 
 #segunda-sessao_paragrafo{
@@ -106,6 +114,7 @@ h2{
     padding: 2vh 3vw;
     background-color: #E2E2E2;
     border-radius: 15px;
+    gap: 10px;
 }
 
 #terceira-sessao_paragrafo{
@@ -113,22 +122,25 @@ h2{
     font-weight: 600;
 }
 
-.terceira-sessao_primeira-div{
-    display: flex;
-    flex-direction: column;
-    overflow-y:scroll;
-    gap: 10px;
-}
-
-.terceira-sessao_primeira-div_sessao-ultimos-estudos{
+.terceira-sessao_primeira-div_sessao-ultimos-estudos {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     background-color: #C8C8C8;
     border-radius: 10px;
-    padding: .1vh 2vw;
+    padding: 0.5vh 2vw;
+    word-wrap: break-word;  /* Quebra palavras longas */
+    min-width: 150px;  /* Impede que a div encolha demais */
 }
+
+.terceira-sessao_primeira-div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;  /* Se o conteúdo for grande, adicione uma barra de rolagem vertical */
+}
+
 
 #primeira-div_sessao-ultimos-estudos_mencao{
     font-size: 60px;

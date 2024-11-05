@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
-import { Home, Login, LangPage, Mapa, Chat, Enem, Cadastro, Tarefas, Perfil } from './pages/Zindex';
+import { Home, Login, LangPage, Mapa, Chat, Enem, Cadastro, Perfil } from './pages/Zindex';
 
 import Redacao from './components/Prova'
 
@@ -20,7 +20,6 @@ function App() {
             <Route path='/mapa' element={<Mapa />} />
             <Route path='/chat' element={<Chat />} />
             <Route path='/home/perfil' element={<Perfil />} />
-            <Route path='/tarefas' element={<Tarefas />} />
             <Route path='/enem/redacao' element={<Redacao />} />
             <Route path='*' element={<Navigate to="/home" />} />
           </>

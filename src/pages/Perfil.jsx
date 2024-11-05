@@ -11,12 +11,21 @@ function Perfil(){
     return(
         <div>
             <Header></Header>
+<<<<<<< HEAD
             <section className='main-usuario'>
                 <ListarDados/>
                 <PerfisComponent/>
                 <hr/>
                 <ListarPosts/>
             </section>
+=======
+            <main className='perfil-main'>
+                <ListarDados/>
+
+                <hr id='linha-divisoria'></hr>
+                <ListarPosts/>
+            </main>
+>>>>>>> cea8667 (Página do chat com requisição das estatisticas)
             
         </div>
         

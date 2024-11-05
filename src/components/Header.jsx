@@ -21,7 +21,6 @@ function Header() {
                 <a href="/home">HOME</a>
                 <a href="/mapa">MAPAS</a>
                 <a href='/enem'>ENEM</a>
-                <a href="">ATIVIDADES</a>
                 <a href="/chat">CHAT IA</a>
                 <img 
                     id="header-segunda-div_icone-user" 

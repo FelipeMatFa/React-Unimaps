@@ -40,6 +40,7 @@
     font-size: 25px;
 }
 
+<<<<<<< HEAD
 #botao-seguir{
     background-color: #0095f6;
     color: white;
@@ -69,6 +70,21 @@
 }
 
 
+=======
+/* Perfil.jsx */
+
+.perfil-main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#linha-divisoria{
+    width: 90vw;
+}
+
+>>>>>>> cea8667 (Página do chat com requisição das estatisticas)
 /* ListarPosts.jsx */
 
 .posts-usuario {
@@ -121,6 +137,7 @@
 
 .image-container:hover .image-text {
     opacity: 1;
+<<<<<<< HEAD
 }
 
 #button-remove {
@@ -246,3 +263,6 @@
         font-size: 12px;
     }
 }
+=======
+}
+>>>>>>> cea8667 (Página do chat com requisição das estatisticas)

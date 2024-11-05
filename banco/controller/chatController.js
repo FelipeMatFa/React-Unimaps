@@ -42,10 +42,38 @@ async function criarPrompt(request, response) {
                 message: "Ops! Não deu...",
             });
         }
-        
-   
 }
 
+async function listarEstatisticas(request, response){
+    const id = request.query.id;
+    const params = [id];
+    
+    const query = "SELECT * FROM estudosIA where id = 8";
+
+    connection.query(query, params, (err, results) => {
+        if(results){
+            response
+                .status(201)
+                .json({
+                    success: true,
+                    message: "Sucesso!",
+                    data: results
+                });
+        } else {
+            response
+                .status(400)
+                .json({
+                    success: false,
+                    message: "Ops! Não deu...",
+                    query: err.sql,
+                    sqlMessage: err.sqlMessage
+                });
+        }
+    });
+}
+
+
 module.exports = {
-    criarPrompt
+    criarPrompt,
+    listarEstatisticas
 };

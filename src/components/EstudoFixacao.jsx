@@ -1,15 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import '../styles/EstudoFixacao.css'
 
 function EstudoFixacao(){
     const [conteudo, setConteudo] = useState("")
     const [tempo, setTempo] = useState("")
-    // const formulario = document.getElementsByClassName("formulario-treinamento");
+    const [estatisticas, setEstatisticas] = useState([]);
 
     const handleSubmit = async(e) => {
         e.preventDefault()
-        alert(conteudo)
-        alert(tempo)
 
         let data = { conteudo };
         const response = await fetch(`http://localhost:3001/api/chat`, {
@@ -28,35 +27,47 @@ function EstudoFixacao(){
 
     }
 
+    useEffect(() => {
+        const getEstatisticas = async () => {
+            let id = sessionStorage.getItem('id')
+            try {
+                const response = await axios.post(`http://localhost:3001/api/estatisticas?id_usuario=${id}`);
+                
+                if (response.data.success){
+                    setEstatisticas(response.data.data);
+                    console.log(response.data.data)
+                } else {
+                    alert(response.data.message);
+                }
+            } catch (error) {
+                console.error("Erro ao carregar conteúdo:", error);
+                alert("Ocorreu um erro ao tentar carregar os dados.");
+            }
+        };
+
+        getEstatisticas();
+    }, []);
+
     return(
-        <main>
+        <main className='main-chat'>
             <h2>ESTUDOS DE FIXAÇÃO</h2>
             <div className='main-primeira-div'>
                 <section className='main-primeira-div_primeira-sessao'>
-                    <p id='primeira-sessao_paragrafo'>Estátisticas de acertos</p>
-                    <section className='primeira-sessao_estatisticas'>
-                        <div className='primeira-sessao_estatisticas_div'>
-                            <p id='primeira-sessao_div_paragrafo'>DIA 1</p>
-                            <p id='primeira-sessao_div_nota'>15/21</p>
-                        </div>
-                        <div className='primeira-sessao_estatisticas_div'>
-                            <p id='primeira-sessao_div_paragrafo'>DIA 2</p>
-                            <p id='primeira-sessao_div_nota'>12/21</p>
-                        </div>
-                        <div className='primeira-sessao_estatisticas_div'>
-                            <p id='primeira-sessao_div_paragrafo'>DIA 3</p>
-                            <p id='primeira-sessao_div_nota'>19/21</p>
-                        </div>
-                        <div className='primeira-sessao_estatisticas_div'>
-                            <p id='primeira-sessao_div_paragrafo'>DIA 4</p>
-                            <p id='primeira-sessao_div_nota'>17/21</p>
-                        </div>
-                        <div className='primeira-sessao_estatisticas_div'>
-                            <p id='primeira-sessao_div_paragrafo'>DIA 5</p>
-                            <p id='primeira-sessao_div_nota'>21/21</p>
-                        </div>
-                    </section>
+                    <p id='primeira-sessao_paragrafo'>Estatísticas de acertos</p>
+                    {estatisticas.length === 0 ? (
+                        <p>Não há estatísticas disponíveis, faça o treinamento abaixo para gerar dados.</p>
+                    ) : (
+                        <ul className='primeira-sessao_estatisticas'>
+                            {estatisticas.map((estatistica) => (
+                                <li className="primeira-sessao_estatisticas_div" key={estatistica.id}>
+                                    <p id='primeira-sessao_div_paragrafo'>{estatistica.dia}</p>
+                                    <p id='primeira-sessao_div_nota'>{estatistica.acertos}</p>
+                                </li>
+                            ))}
+                        </ul>
+                    )}
                 </section>
+
                 <section className='main-primeira-div_segunda-sessao'>
                     <p id='segunda-sessao_paragrafo'>Fazer treinamento</p>
                     <form className='formulario-treinamento' onSubmit={handleSubmit}>
@@ -74,35 +85,30 @@ function EstudoFixacao(){
                             value={tempo}
                             onChange={(e) => setTempo(e.target.value)}
                         />
-                        {/* <input id='formulario-treinamento_submeter' type="submit"/> */}
-                        <button>Qunrto tempo?</button>
+                        <button>Iniciar</button>
                     </form>
                 </section>
                 <section className='main-primeira-div_terceira-sessao'>
                     <p id='terceira-sessao_paragrafo'>Ultimos estudos</p>
+
                     <div className='terceira-sessao_primeira-div'>
-                        <section className='terceira-sessao_primeira-div_sessao-ultimos-estudos'>
-                            <div className='primeira-div_sessao-ultimos-estudos_nota'>
-                                <p>Fisica quantica</p>
-                                <p>Acertos: 14</p>
-                            </div>
-                            <p id='primeira-div_sessao-ultimos-estudos_mencao'>ED</p>
-                        </section>
-                        <section className='terceira-sessao_primeira-div_sessao-ultimos-estudos'>
-                            <div className='primeira-div_sessao-ultimos-estudos_nota'>
-                                <p>Fisica quantica</p>
-                                <p>Acertos: 18</p>
-                            </div>
-                            <p id='primeira-div_sessao-ultimos-estudos_mencao'>ED</p>
-                        </section>
-                        <section className='terceira-sessao_primeira-div_sessao-ultimos-estudos'>
-                            <div className='primeira-div_sessao-ultimos-estudos_nota'>
-                                <p>Fisica quantica</p>
-                                <p>Acertos: 21</p>
-                            </div>
-                            <p id='primeira-div_sessao-ultimos-estudos_mencao'>PD</p>
-                        </section>
-                        
+
+                        {estatisticas.length === 0 ? (
+                            <p>Não há estatísticas disponíveis, faça o treinamento abaixo para gerar dados.</p>
+                        ) : (
+                            <ul className='terceira-sessao_primeira-div_sessao-ultimos-estudos'>
+                                {estatisticas.map((estatistica) => (
+                                    <li className="primeira-div_sessao-ultimos-estudos_nota" key={estatistica.id}>
+                                        <div>
+                                            <p>{estatistica.materia}</p>
+                                            <p>Acertos: {estatistica.acertos}</p>
+                                        </div>
+                                        <p id='primeira-div_sessao-ultimos-estudos_mencao'>{estatistica.mencao}</p>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+
                     </div>
                 </section>
             </div>
