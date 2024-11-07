@@ -4,7 +4,7 @@ import axios from 'axios';
 import '../styles/LoginForm.css';
 import images from '../assets/image';
 
-const baseURL = "https://react-unimaps.vercel.app/api/login";
+const baseURL = process.env.REACT_APP_API_URL || "http://localhost:3001/api/login";
 
 function FormLogin() {
     const [email, setEmail] = useState("");
