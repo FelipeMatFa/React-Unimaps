@@ -7,3 +7,4 @@ export { default as Chat } from './Chat';
 export { default as Enem } from './Enem';
 export { default as Cadastro } from './Cadastro';
 export { default as Perfil } from './Perfil';
+export { default as Treinamento } from './Treinamento';

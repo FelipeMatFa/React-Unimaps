@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
-import { Home, Login, LangPage, Mapa, Chat, Enem, Cadastro, Perfil } from './pages/Zindex';
+import { Home, Login, LangPage, Mapa, Chat, Enem, Cadastro, Perfil, Treinamento } from './pages/Zindex';
 
 import Redacao from './components/Prova'
 
@@ -19,6 +19,7 @@ function App() {
             <Route path='/enem' element={<Enem />} />
             <Route path='/mapa' element={<Mapa />} />
             <Route path='/chat' element={<Chat />} />
+            <Route path='/chat/treinamento' element={<Treinamento/>}/>
             <Route path='/home/perfil' element={<Perfil />} />
             <Route path='/enem/redacao' element={<Redacao />} />
             <Route path='*' element={<Navigate to="/home" />} />

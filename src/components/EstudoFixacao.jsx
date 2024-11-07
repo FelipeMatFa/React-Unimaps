@@ -1,31 +1,23 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/EstudoFixacao.css'
 
 function EstudoFixacao(){
+    const navigate = useNavigate();
+    const location = useLocation();
+
     const [conteudo, setConteudo] = useState("")
     const [tempo, setTempo] = useState("")
     const [estatisticas, setEstatisticas] = useState([]);
 
-    const handleSubmit = async(e) => {
-        e.preventDefault()
-
-        let data = { conteudo };
-        const response = await fetch(`http://localhost:3001/api/chat`, {
-            method: "POST",
-            headers: { "Content-type": "application/json;charset=UTF-8" },
-            body: JSON.stringify(data),
+    const treinamento = (e) => {
+        e.preventDefault();
+        navigate('/chat/treinamento', {
+            state: {conteudo, tempo}
         });
-
-        let content = await response.json();
-
-        if (content.data) {
-            console.log(content)
-        } else {
-            console.log("Deu erro!");
-        }
-
-    }
+    };
 
     useEffect(() => {
         const getEstatisticas = async () => {
@@ -70,12 +62,13 @@ function EstudoFixacao(){
 
                 <section className='main-primeira-div_segunda-sessao'>
                     <p id='segunda-sessao_paragrafo'>Fazer treinamento</p>
-                    <form className='formulario-treinamento' onSubmit={handleSubmit}>
+                    <form className='formulario-treinamento' onSubmit={treinamento}>
                         <input 
                             id='formulario-treinamento_conteudo' 
                             type="text" 
                             placeholder="Sobre qual conteúdo?"
                             value={conteudo}
+                            required
                             onChange={(e) => setConteudo(e.target.value)}
                         />
                         <input 
@@ -83,9 +76,12 @@ function EstudoFixacao(){
                             type="number" 
                             placeholder="Quanto tempo?"
                             value={tempo}
+                            required
                             onChange={(e) => setTempo(e.target.value)}
                         />
-                        <button>Iniciar</button>
+                        <input 
+                            type="submit"
+                        />
                     </form>
                 </section>
                 <section className='main-primeira-div_terceira-sessao'>
