@@ -1,4 +1,3 @@
-import '../../../styles/landingpage/footer.css'
 
 function Footer(){
     return(

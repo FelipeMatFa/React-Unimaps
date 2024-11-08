@@ -1,4 +1,3 @@
-import '../../../styles/landingpage/main.css'
 import Images from '../../../assets/image'
 
 function Main(){

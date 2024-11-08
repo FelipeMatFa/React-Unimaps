@@ -21,7 +21,7 @@ function Treinamento() {
     const getChat = async () => {
         let prompt = `Faça 5 questões sobre este conteúdo para treinar questões de enem: ${conteudo}`;
         try {
-            const response = await axios.post('http://localhost:3001/api/chat', { prompt });
+            const response = await axios.post('https://react-unimaps.vercel.app/api/chat', { prompt });
             if (response.data.success) {
                 setQuestoes(response.data);
                 console.log(questoes)

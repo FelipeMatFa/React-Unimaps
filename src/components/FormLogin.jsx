@@ -4,7 +4,7 @@ import axios from 'axios';
 import '../styles/LoginForm.css';
 import images from '../assets/image';
 
-const baseURL = `${process.env.REACT_APP_API_URL}/login` || "http://localhost:3001/api/login";
+const baseURL = "http://localhost:3001/api/login";
 
 function FormLogin() {
     const [email, setEmail] = useState("");

@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import icoLogo from '../../../assets/ico-logo.png'
-import '../../../styles/landingpage/header.css'
 
 function Header(){
     const navegate = useNavigate();
