@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import axios from 'axios';
 
@@ -7,25 +7,26 @@ function Treinamento() {
     const location = useLocation();
     const { conteudo, tempo } = location.state || {};
 
-    const [ questoes, setQuestoes ] = useState([])
+    const [questoes, setQuestoes] = useState([]);
     const [timer, setTimer] = useState(tempo * 60);
 
     useEffect(() => {
+        getChat();
         const intervalId = setInterval(() => {
-          setTimer((prevTimer) => prevTimer - 1); 
+            setTimer((prevTimer) => prevTimer - 1);     
         }, 1000);
         
         return () => clearInterval(intervalId);
-      }, []);
+    }, []);
 
     const getChat = async () => {
-        let prompt = `Faça 5 questões sobre este conteúdo para treinar questões de enem: ${conteudo}`;
         try {
-            const response = await axios.post('https://react-unimaps.vercel.app/api/chat', { prompt });
+            let prompt = `Faça 5 questões sobre este conteúdo para treinar questões de enem e com opção a,b,c,d,e e que não precisem de imagem para entender: ${conteudo}`;
+            const response = await axios.post('http://localhost:3001/api/chat', { prompt });
             if (response.data.success) {
-                setQuestoes(response.data);
-                console.log(questoes)
-                console.log(response.data.data);
+                const questoesArray = response.data.data.split('\n').filter(questao => questao.trim() !== '');
+                setQuestoes(questoesArray);
+                console.log(questoesArray); 
             } else {
                 alert(response.data.message);
             }
@@ -34,26 +35,30 @@ function Treinamento() {
             alert("Ocorreu um erro ao tentar carregar os dados."); 
         }
     };
-    
-    
+
+    const minutes = Math.floor(timer / 60);
+    const seconds = timer % 60;
+
     return (
         <div>
-            <Header></Header>
-            <h1>Treinamento</h1>
+            <Header />
             {conteudo && tempo ? (
-                <div>
+                <div className=''>
+                    <h1>Treinamento</h1>
                     <p><strong>Conteúdo:</strong> {conteudo}</p>
-                    <p><strong>Tempo:</strong> {timer}s</p>
+                    <p><strong>Tempo:</strong> {minutes}m {seconds}s</p>
 
                     <ul>
-                        {questoes.map((questao) => (
-                            <li key={questao.id}>
-                                <p>{questao.dia}</p>
-                                <p>{questao.acertos}</p>
-                            </li>
-                        ))}
+                        {Array.isArray(questoes) && questoes.length > 0 ? (
+                            questoes.map((questao, index) => (
+                                <li key={index}>
+                                    <p>{questao || "Questão não disponível"}</p>
+                                </li>
+                            ))
+                        ) : (
+                            <p>Nenhuma questão gerada.</p>
+                        )}
                     </ul>
-                    <button onClick={getChat}>AAA</button>
                 </div>
             ) : (
                 <p>Não foi possível recuperar os dados do treinamento.</p>
