@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { criarPrompt, listarEstatisticas } = require('../controller/chatController');
+const { criarPrompt, listarEstatisticas, ResponderChat } = require('../controller/chatController');
 
 /**
  * @swagger
@@ -19,6 +19,8 @@ const { criarPrompt, listarEstatisticas } = require('../controller/chatControlle
  *                   type: object
  */
 router.post("/chat", criarPrompt);
+
+router.post("/chat/resposta", ResponderChat);
 
 router.post("/estatisticas", listarEstatisticas);
 

@@ -43,6 +43,42 @@ async function criarPrompt(request, response) {
     }
 }
 
+async function ResponderChat(request, response) {
+    const { pergunta, resposta } = request.body;  // Extrair diretamente do body
+
+    if (!pergunta || !resposta) {
+        return response.status(400).json({
+            success: false,
+            message: "Pergunta e/ou resposta não fornecida."
+        });
+    }
+
+    try {
+        const result = await model.generateContent(`Pergunta: ${pergunta}, Resposta: ${resposta}`);
+        const textoResposta = result.response?.text;
+
+        if (textoResposta) {
+            response.status(200).json({
+                success: true,
+                message: "Resposta gerada com sucesso!",
+                data: textoResposta
+            });
+        } else {
+            response.status(400).json({
+                success: false,
+                message: "Erro ao gerar resposta."
+            });
+        }
+    } catch (error) {
+        console.error("Erro ao processar a solicitação:", error);
+        response.status(500).json({
+            success: false,
+            message: "Erro ao processar a solicitação."
+        });
+    }
+}
+
+
 async function listarEstatisticas(request, response) {
     const id = request.query.id;
     const params = [id];
@@ -69,5 +105,6 @@ async function listarEstatisticas(request, response) {
 
 module.exports = {
     criarPrompt,
+    ResponderChat,
     listarEstatisticas
 };
