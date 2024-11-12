@@ -7,8 +7,12 @@ import axios from 'axios';
 import '../styles/treinamento.css';
 
 function Treinamento() {
+    let id = sessionStorage.getItem("id");
+
     const location = useLocation();
     const { conteudo, tempo } = location.state || {};
+
+    const [mencao, setMencao] = useState("");
 
     const [questoes, setQuestoes] = useState([]);
     const [timer, setTimer] = useState(tempo * 60);
@@ -22,21 +26,29 @@ function Treinamento() {
 
     useEffect(() => {
         const intervalId = setInterval(() => {
-            setTimer((prevTimer) => prevTimer - 1);     
+            if (Array.isArray(questoes) && questoes.length > 0) {
+                setTimer((prevTimer) => prevTimer - 1);
+            }
         }, 1000);
     
-        return () => clearInterval(intervalId);
-    }, []);
+        const getChatInterval = setInterval(() => {
+            if (Array.isArray(questoes) && questoes.length === 0) {
+                getChat();
+            }
+        }, 10000);
+    
+        return () => {
+            clearInterval(intervalId);
+            clearInterval(getChatInterval);
+        };
+    }, [questoes, perguntas]);
 
     const getChat = async () => {
         try {
             let prompt = `Faça 5 questões sobre este conteúdo para treinar questões de enem e com opção a,b,c,d,e e que não precisem de imagem para entender: ${conteudo}`;
             const response = await axios.post('http://localhost:3001/api/chat', { prompt });
-            
-            // Pergunta do chat p/verificação
-            setPerguntas(
-                response.data.data
-            );
+    
+            setPerguntas(response.data.data);
             
             if (response.data.success) {
                 const questoesArray = response.data.data.split(/(?=Questão \d+:)/g)
@@ -47,7 +59,7 @@ function Treinamento() {
                             const numeroQuestao = match[1].trim();
                             const enunciado = match[2].trim();
                             const opcoes = questaoTexto.match(/\([A-E]\)\s*[^()]+/g).map(opcao => opcao.trim());
-
+    
                             return {
                                 numeroQuestao,
                                 enunciado,
@@ -58,7 +70,8 @@ function Treinamento() {
                         }
                     })
                     .filter(questao => questao);
-
+    
+                console.log("Questoes:", questoesArray);  // Verifique a estrutura das questões
                 setQuestoes(questoesArray);
             } else {
                 alert(response.data.message);
@@ -67,20 +80,42 @@ function Treinamento() {
             console.error("Erro ao carregar conteúdo:", error);
             alert("Ocorreu um erro ao tentar carregar os dados."); 
         }
-    };
+    };    
 
     const postRespostasChat = async () => {
         try {
-            if (Array.isArray(perguntas) && perguntas.length > 0) {
+            if (Array.isArray(questoes) && questoes.length > 0) {
                 const data = {
-                    pergunta: perguntas.map(questao => questao.enunciado).join(' '),
+                    pergunta: questoes.map(questao => questao.enunciado).join(' '),
                     resposta: Object.values(respostas).join(' ')
                 };
     
                 const response = await axios.post('http://localhost:3001/api/chat/resposta', data);
-                
+                const respostaTexto = response.data.data;
+    
+                console.log(respostaTexto)
+                // Extrair o número de acertos no formato 0X/05, pois pode ser encontrado de 0 a 5 o número de acertos
+                const acertosMatch = respostaTexto.match(/0[0-5]\/05/);
+                // const acertosMateria = respostaTexto.match(/0[0-5]\/05/);
+                const acertos = acertosMatch ? acertosMatch[0] : "N/A";
+
+                if(acertos === "05/05"){
+                    setMencao("PD")
+                } else if(acertos === "00/05" || acertos === "01/05" || acertos === "02/05"){
+                    setMencao("ND")
+                } else if(acertos === "03/05" || acertos === "04/05"){
+                    setMencao("ED")
+                }
+
+                const enviarAcerto = await axios.post('http://localhost:3001/api/chat/enviaracerto', { acertos, mencao, id });
+                if (enviarAcerto.data.sucess){
+                    console.log("Sucesso!")
+                } else {
+                    console.log("Erro ao salvar seus dados de acerto")
+                }
+    
                 if (response.data.success) {
-                    alert(response.data.message);  // Exibe o texto da resposta gerada
+                    alert(`Acertos: ${acertos}`);
                 } else {
                     alert(response.data.message);
                 }

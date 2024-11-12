@@ -44,7 +44,7 @@ async function criarPrompt(request, response) {
 }
 
 async function ResponderChat(request, response) {
-    const { pergunta, resposta } = request.body;  // Extrair diretamente do body
+    const { pergunta, resposta } = request.body;
 
     if (!pergunta || !resposta) {
         return response.status(400).json({
@@ -54,15 +54,21 @@ async function ResponderChat(request, response) {
     }
 
     try {
-        const result = await model.generateContent(`Pergunta: ${pergunta}, Resposta: ${resposta}`);
-        const textoResposta = result.response?.text;
+        const result = await model.generateContent(`Pergunta: ${pergunta}, Resposta: ${resposta}; agora corrija isso e envie o número de acertos no formato 0X/05, onde X é o número de acertos`);
 
-        if (textoResposta) {
-            response.status(200).json({
-                success: true,
-                message: "Resposta gerada com sucesso!",
-                data: textoResposta
-            });
+        const resultado = await result.response;
+
+        const text = resultado.text();
+        console.log(text)
+
+        if (text) {
+            response.status(200)
+                .json({
+                    success: true,
+                    message: "Resposta gerada com sucesso!",
+                    data: text
+                }
+            );
         } else {
             response.status(400).json({
                 success: false,
@@ -78,6 +84,32 @@ async function ResponderChat(request, response) {
     }
 }
 
+async function enviarAcerto(request, response) {
+    const params = Array(
+        request.body.acertos,
+        request.body.mencao,
+        request.query.id
+    )
+    
+    const query = "Insert into estudosIA(acertos,mencao,id) values (?,?,?)";
+
+    connection.query(query, params, (err, results) => {
+        if (err) {
+            return response.status(500).json({
+                success: false,
+                message: "Erro ao inserir menções no banco.",
+                query: err.sql,
+                sqlMessage: err.sqlMessage
+            });
+        }
+
+        response.status(201).json({
+            success: true,
+            message: "Sucesso!",
+            data: results
+        });
+    });
+}
 
 async function listarEstatisticas(request, response) {
     const id = request.query.id;
@@ -106,5 +138,6 @@ async function listarEstatisticas(request, response) {
 module.exports = {
     criarPrompt,
     ResponderChat,
+    enviarAcerto,
     listarEstatisticas
 };
