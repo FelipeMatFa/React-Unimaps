@@ -54,7 +54,7 @@ async function ResponderChat(request, response) {
     }
 
     try {
-        const result = await model.generateContent(`Pergunta: ${pergunta}, Resposta: ${resposta}; agora corrija isso e envie o número de acertos no formato 0X/05, onde X é o número de acertos`);
+        const result = await model.generateContent(`Pergunta: ${pergunta}, Resposta: ${resposta}; agora corrija isso e envie o número de acertos no formato 0X/15, onde X é o número de acertos. E, devolva no final da resposta "Número de acertos: 0X/15"`);
 
         const resultado = await result.response;
 
@@ -87,11 +87,11 @@ async function ResponderChat(request, response) {
 async function enviarAcerto(request, response) {
     const params = Array(
         request.body.acertos,
-        request.body.mencao,
-        request.query.id
+        request.body.acertosA,
+        request.body.id_usuario
     )
-    
-    const query = "Insert into estudosIA(acertos,mencao,id) values (?,?,?)";
+    console.log(params)
+    const query = "Insert into estudosIA(acertos,mencao,id_usuario) values (?,?,?)";
 
     connection.query(query, params, (err, results) => {
         if (err) {
@@ -112,12 +112,11 @@ async function enviarAcerto(request, response) {
 }
 
 async function listarEstatisticas(request, response) {
-    const id = request.query.id;
-    const params = [id];
+    const id = request.body.id;
     
-    const query = "SELECT * FROM estudosIA where id = ?";
+    const query = "SELECT * FROM estudosIA where id_usuario = ?";
 
-    connection.query(query, params, (err, results) => {
+    connection.query(query, [id], (err, results) => {
         if (err) {
             return response.status(500).json({
                 success: false,

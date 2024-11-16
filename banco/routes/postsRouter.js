@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { selecionarPosts, criarPosts, excluirPost, selecionarPostsUsuario } = require('../controller/postsController');
+const { selecionarPosts, criarPosts, excluirPost, selecionarPostsUsuario, selecionarPost } = require('../controller/postsController');
 
 /**
  * @swagger
@@ -61,4 +61,7 @@ router.post('/criarposts', criarPosts);
 router.delete('/excluirposts', excluirPost)
 
 router.post('/posts/usuario', selecionarPostsUsuario)
+
+router.get('/post/selecionarpost', selecionarPost)
+
 module.exports = router;

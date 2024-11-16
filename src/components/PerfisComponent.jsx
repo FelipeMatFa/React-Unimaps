@@ -36,8 +36,6 @@ function PerfisComponent() {
                 ))}
             </ul>
         </div>
-
-
     );
 }
 

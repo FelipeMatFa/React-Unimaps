@@ -128,10 +128,46 @@ async function excluirPost(request, response) {
     });
 }
 
+async function selecionarPost(request, response) {
+    const id = request.query.id; // Obtem o ID da query string
+
+    if (!id) {
+        return response.status(400).json({
+            success: false,
+            message: "ID não fornecido.",
+        });
+    }
+
+    const query = "SELECT * FROM post WHERE id = ?";
+
+    connection.query(query, [id], (err, results) => {
+        if (err) {
+            return response.status(500).json({
+                success: false,
+                message: "Erro ao buscar o post!",
+                error: err.sqlMessage,
+            });
+        }
+
+        if (results.length > 0) {
+            return response.status(200).json({
+                success: true,
+                message: "Post encontrado com sucesso!",
+                data: results,
+            });
+        } else {
+            return response.status(404).json({
+                success: false,
+                message: "Post não encontrado!",
+            });
+        }
+    });
+}
 
 module.exports = {
     selecionarPosts,
     criarPosts,
     excluirPost,
     selecionarPostsUsuario,
+    selecionarPost
 };

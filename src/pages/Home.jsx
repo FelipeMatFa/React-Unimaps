@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 // CSS
@@ -14,6 +16,15 @@ function Home() {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const autenticado = sessionStorage.getItem('id');
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const infoPost = (id) => {
+        navigate('/home/infopost', {
+            state: {id}
+        });
+    };
 
     useEffect(() => {
         const getPosts = async () => {
@@ -58,7 +69,7 @@ function Home() {
                 ) : (
                     Array.isArray(posts) && posts.map(Post => (
                         <div className="posts_listados" key={Post.id}>
-                            <section className='posts_listados_cabecalho'>
+                            <section className='posts_listados_cabecalho' onClick={() => infoPost(Post.id)}>
                                 <div className='posts_listados_cabecalho_usuario'>
                                     <img 
                                         className="user-avatar" 

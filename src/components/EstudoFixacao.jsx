@@ -21,9 +21,9 @@ function EstudoFixacao(){
 
     useEffect(() => {
         const getEstatisticas = async () => {
-            let id = sessionStorage.getItem('id')
+            const id = sessionStorage.getItem('id')
             try {
-                const response = await axios.post(`http://localhost:3001/api/estatisticas?id_usuario=${id}`);
+                const response = await axios.post(`http://localhost:3001/api/estatisticas`, {id});
                 
                 if (response.data.success){
                     setEstatisticas(response.data.data);
@@ -93,15 +93,14 @@ function EstudoFixacao(){
                             <p>Não há estatísticas disponíveis, faça o treinamento abaixo para gerar dados.</p>
                         ) : (
                             <ul className='terceira-sessao_primeira-div_sessao-ultimos-estudos'>
-                                {estatisticas.map((estatistica) => (
-                                    <li className="primeira-div_sessao-ultimos-estudos_nota" key={estatistica.id}>
-                                        <div>
-                                            <p>{estatistica.materia}</p>
-                                            <p>Acertos: {estatistica.acertos}</p>
-                                        </div>
-                                        <p id='primeira-div_sessao-ultimos-estudos_mencao'>{estatistica.mencao}</p>
-                                    </li>
-                                ))}
+                            {estatisticas.map((estatistica) => (
+                                <li className="primeira-div_sessao-ultimos-estudos_nota" key={estatistica.id}>
+                                    <div>
+                                        <p>Acertos: {estatistica.acertos}</p>
+                                    </div>
+                                    <p id='primeira-div_sessao-ultimos-estudos_mencao'>{estatistica.mencao}</p>
+                                </li>
+                            ))}
                             </ul>
                         )}
 
