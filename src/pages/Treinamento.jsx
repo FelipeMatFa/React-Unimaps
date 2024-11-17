@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import axios from 'axios';
@@ -13,16 +14,13 @@ function Treinamento() {
     let id_usuario = sessionStorage.getItem("id");
 
     const location = useLocation();
+    const navigate = useNavigate();
     const { conteudo, tempo } = location.state || {};
 
     const [questoes, setQuestoes] = useState([]);
     const [timer, setTimer] = useState(tempo * 60);
     const [respostas, setRespostas] = useState({});
     const [perguntas, setPerguntas] = useState([]);
-
-    // useEffect(() => {
-    //     getChat();
-    // }, []);
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -128,6 +126,7 @@ function Treinamento() {
     
                 if (response.data.success) {
                     alert(`Acertos: ${acertos}`);
+                    navigate('/chat');
                 } else {
                     alert(response.data.message);
                 }
@@ -191,7 +190,7 @@ function Treinamento() {
                         )}
                     </ul>
 
-                    <button onClick={postRespostasChat}>Responder</button>
+                    <button id="botao-submit" onClick={postRespostasChat}>Responder</button>
 
                 </div>
             ) : (

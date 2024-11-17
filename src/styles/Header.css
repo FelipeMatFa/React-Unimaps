@@ -42,7 +42,37 @@ header{
     height: 5vh;
 }
 
-@media screen and (min-width: 400px) and (max-width: 700px){
+@media screen and (min-width: 300px) and (max-width: 400px){
+    header{
+        padding: 2vh 4vw;
+    }
+    
+    .header-primeira-div{
+        gap: 15px;
+    }
+    
+    #header-primeira-div_logo{
+        height: 4vh;
+    }
+    
+    #header-primeira-div_titulo{
+        font-size: 14px;
+    }
+    
+    .header-segunda-div{
+        gap: 10px;
+    }
+    
+    .header-segunda-div a{  
+        font-size: 8px;
+    }
+    
+    #header-segunda-div_icone-user{
+        height: 3vh;
+    }
+}
+
+@media screen and (min-width: 401px) and (max-width: 700px){
     header{
         padding: 2vh 4vw;
     }
@@ -64,7 +94,7 @@ header{
     }
     
     .header-segunda-div a{  
-        font-size: 7px;
+        font-size: 10px;
     }
     
     #header-segunda-div_icone-user{

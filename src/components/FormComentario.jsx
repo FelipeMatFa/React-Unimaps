@@ -17,6 +17,7 @@ function FormComentario({ id_post, getPost }) {
             if (response.data.success) {
                 console.log(response.data.data);
                 getPost();
+                setComentario("")
             } else {
                 console.warn("Não foi possível comentar.");
             }

@@ -27,35 +27,27 @@ async function selecionarUsuario(request, response) {
     });
 }
 
-async function atualizarDados(request, response){
-    const params = Array(
-        request.body.email,
-        request.body.nome,
-        request.body.senha,
-        request.body.id
-    );
+async function atualizarDados(request, response) {
+    const { email, nome, senha, foto, id } = request.body;
 
-    const query = "UPDATE usuario SET email = ?, nome = ?, senha = ? WHERE id = ?";
+    const params = [email, nome, senha, foto, id];
+    const query = "UPDATE usuario SET email = ?, nome = ?, senha = ?, foto = ? WHERE id = ?";
 
     connection.query(query, params, (err, results) => {
-        if(results){
-            response
-                .status(201)
-                .json({
-                    success: true,
-                    message: "Sucesso!",
-                    data: results
-                });
-        } else {
-            response
-                .status(400)
-                .json({
-                    success: false,
-                    message: "Ops! Não deu...",
-                    query: err.sql,
-                    sqlMessage: err.sqlMessage
-                });
+        if (err) {
+            return response.status(400).json({
+                success: false,
+                message: "Ops! Não deu...",
+                sql: query,
+                sqlMessage: err.sqlMessage,
+            });
         }
+
+        response.status(201).json({
+            success: true,
+            message: "Sucesso!",
+            data: results,
+        });
     });
 }
 

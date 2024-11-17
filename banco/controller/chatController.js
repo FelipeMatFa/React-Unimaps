@@ -113,8 +113,18 @@ async function enviarAcerto(request, response) {
 
 async function listarEstatisticas(request, response) {
     const id = request.body.id;
-    
-    const query = "SELECT * FROM estudosIA where id_usuario = ?";
+
+    // Query com formatação do campo `dia`
+    const query = `
+        SELECT 
+            id,
+            id_usuario,
+            DATE_FORMAT(dia, '%d/%m/%Y %H:%i:%s') AS dia_formatado,
+            acertos,
+            materia,
+            mencao
+        FROM estudosIA 
+        WHERE id_usuario = ?`;
 
     connection.query(query, [id], (err, results) => {
         if (err) {

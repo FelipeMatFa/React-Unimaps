@@ -147,12 +147,16 @@ async function selecionarPost(request, response) {
             post.titulo,
             comentarios.id AS comentario_id,
             comentarios.comentario,
-            usuario.nome AS nome_usuario,
-            usuario.foto AS foto_usuario
+            usuario_post.nome AS nome_usuario_post, 
+            usuario_post.foto AS foto_usuario_post,
+            usuario_comentario.nome AS nome_usuario_comentario,
+            usuario_comentario.foto AS foto_usuario_comentario
         FROM post
         LEFT JOIN comentarios ON post.id = comentarios.id_post
-        LEFT JOIN usuario ON post.id_usuario = usuario.id
-        WHERE post.id = ?`;
+        LEFT JOIN usuario AS usuario_post ON post.id_usuario = usuario_post.id
+        LEFT JOIN usuario AS usuario_comentario ON comentarios.id_usuario = usuario_comentario.id
+        WHERE post.id = ?
+`;
 
     connection.query(query, [id], (err, results) => {
         if (err) {
@@ -171,16 +175,21 @@ async function selecionarPost(request, response) {
                 imagem: results[0].imagem,
                 titulo: results[0].titulo,
                 usuario: {
-                    nome: results[0].nome_usuario,
-                    foto: results[0].foto_usuario,
+                    nome: results[0].nome_usuario_post,
+                    foto: results[0].foto_usuario_post,
                 },
                 comentarios: results
                     .filter((row) => row.comentario_id)
                     .map((row) => ({
                         id: row.comentario_id,
                         texto: row.comentario,
+                        usuario: {
+                            nome: row.nome_usuario_comentario,
+                            foto: row.foto_usuario_comentario,
+                        },
                     })),
             };
+            
 
             return response.status(200).json({
                 success: true,

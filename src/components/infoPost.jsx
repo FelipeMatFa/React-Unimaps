@@ -58,11 +58,9 @@ function InfoPost() {
                                     {post.comentarios && post.comentarios.length > 0 ? (
                                         post.comentarios.map((comentario) => (
                                             <div key={comentario.id} className="comentario">
-                                                <img 
-                                                    src={post.usuario.foto}
-                                                />
+                                                <img src={comentario.usuario.foto} alt="Foto do usuário" />
                                                 <section className="comentario-info">
-                                                    <p id="nome-usuario">{post.usuario.nome}</p>
+                                                    <p id="nome-usuario">{comentario.usuario.nome}</p>
                                                     <p id="comentario-usuario">{comentario.texto}</p>
                                                 </section>
                                             </div>
@@ -73,7 +71,7 @@ function InfoPost() {
                                 </div>
                                     <FormComentario 
                                         id_post={id}
-                                        getPost={getPost} // Passando a função getPost para o FormComentario
+                                        getPost={getPost}
                                     />
                                 </section>
                             </div>

@@ -28,6 +28,9 @@
 
 .conteudo {
     grid-area: conteudo;
+    background-color: #e3e3e3;
+    padding: 1vh;
+    border-radius: 10px;
 }
 
 .sessao-conteudo {
@@ -100,3 +103,309 @@
     background-color: black;
 }
 
+@media screen and (min-width: 300px) and (max-width: 400px) {
+    .primeira-sessao_posts {
+        padding: 4vh 1vh 4vh 1vh;
+    }
+    
+    .posts-usuario_corpo {
+        display: grid;
+        grid-template-areas: 
+            "imagem" 
+            "conteudo";
+        grid-template-columns: 1fr;
+    }
+    
+    .sessao-conteudo {
+        padding: 16px;
+        height: 100%;
+    }
+    
+    .comentarios {
+        max-height: 85vh;
+    }
+    
+    .comentario {
+        padding: 5px;
+    }
+    
+    .comentario-info{
+        gap: 5px;
+    }
+    
+    #nome-usuario{
+        font-size: 18px;
+    }
+    
+    #comentario-usuario{
+        font-size: 16px;
+    }
+    
+    .comentario img{
+        height: 3vh;
+        border-radius: 50px;
+    }
+    
+    .mensagem {
+        gap: 8px;
+    }
+    
+    .mensagem input {
+        padding: 10px;
+    }
+    
+    .mensagem_input-text{
+        width: 50vw;
+        height: 1.5vh;
+    }
+    
+    .mensagem_input-submit{
+        width: 20vw;
+        height: 4vh;
+    }
+}
+
+@media screen and (min-width: 401px) and (max-width: 500px) {
+    .primeira-sessao_posts {
+        padding: 4vh 1vh 4vh 1vh;
+    }
+    
+    .posts-usuario_corpo {
+        display: grid;
+        grid-template-areas: 
+            "imagem" 
+            "conteudo";
+        grid-template-columns: 1fr;
+    }
+    
+    .sessao-conteudo {
+        padding: 16px;
+        height: 100%;
+    }
+    
+    .comentarios {
+        max-height: 85vh;
+    }
+    
+    .comentario {
+        padding: 5px;
+    }
+    
+    .comentario-info{
+        gap: 5px;
+    }
+    
+    #nome-usuario{
+        font-size: 18px;
+    }
+    
+    #comentario-usuario{
+        font-size: 16px;
+    }
+    
+    .comentario img{
+        height: 3vh;
+        border-radius: 50px;
+    }
+    
+    .mensagem {
+        gap: 8px;
+    }
+    
+    .mensagem input {
+        padding: 10px;
+    }
+    
+    .mensagem_input-text{
+        width: 50vw;
+        height: 1.5vh;
+    }
+    
+    .mensagem_input-submit{
+        width: 20vw;
+        height: 4vh;
+    }
+}
+
+@media screen and (min-width: 501px) and (max-width: 700px) {
+    .primeira-sessao_posts {
+        padding: 4vh 1vh 4vh 1vh;
+    }
+    
+    .posts-usuario_corpo {
+        display: grid;
+        grid-template-areas: 
+            "imagem" 
+            "conteudo";
+        grid-template-columns: 1fr;
+    }
+    
+    .sessao-conteudo {
+        padding: 16px;
+        height: 100%;
+    }
+    
+    .comentarios {
+        max-height: 85vh;
+    }
+    
+    .comentario {
+        padding: 5px;
+    }
+    
+    .comentario-info{
+        gap: 5px;
+    }
+    
+    #nome-usuario{
+        font-size: 18px;
+    }
+    
+    #comentario-usuario{
+        font-size: 16px;
+    }
+    
+    .comentario img{
+        height: 3vh;
+        border-radius: 50px;
+    }
+    
+    .mensagem {
+        gap: 8px;
+    }
+    
+    .mensagem input {
+        padding: 10px;
+    }
+    
+    .mensagem_input-text{
+        width: 50vw;
+        height: 1.5vh;
+    }
+    
+    .mensagem_input-submit{
+        width: 20vw;
+        height: 4vh;
+    }
+}
+@media screen and (min-width: 701px) and (max-width: 1100px) {
+    .primeira-sessao_posts {
+        padding: 4vh 1vh 4vh 1vh;
+    }
+    
+    .posts-usuario_corpo {
+        display: grid;
+        grid-template-areas: 
+            "imagem conteudo";
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .sessao-conteudo {
+        padding: 16px;
+        height: 100%;
+    }
+    
+    .comentarios {
+        max-height: 85vh;
+    }
+    
+    .comentario {
+        padding: 5px;
+    }
+    
+    .comentario-info{
+        gap: 5px;
+    }
+    
+    #nome-usuario{
+        font-size: 18px;
+    }
+    
+    #comentario-usuario{
+        font-size: 16px;
+    }
+    
+    .comentario img{
+        height: 3vh;
+        border-radius: 50px;
+    }
+    
+    .mensagem {
+        gap: 8px;
+    }
+    
+    .mensagem input {
+        padding: 10px;
+    }
+    
+    .mensagem_input-text{
+        width: 20vw;
+        height: 1.5vh;
+    }
+    
+    .mensagem_input-submit{
+        width: 20vw;
+        height: 4vh;
+    }
+}
+
+@media screen and (min-width: 1101px) and (max-width: 1300px) {
+    .primeira-sessao_posts {
+        padding: 4vh 1vh 4vh 1vh;
+    }
+    
+    .posts-usuario_corpo {
+        display: grid;
+        grid-template-areas: 
+            "imagem conteudo";
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .sessao-conteudo {
+        padding: 16px;
+        height: 100%;
+    }
+    
+    .comentarios {
+        max-height: 85vh;
+    }
+    
+    .comentario {
+        padding: 5px;
+    }
+    
+    .comentario-info{
+        gap: 5px;
+    }
+    
+    #nome-usuario{
+        font-size: 18px;
+    }
+    
+    #comentario-usuario{
+        font-size: 16px;
+    }
+    
+    .comentario img{
+        height: 3vh;
+        border-radius: 50px;
+    }
+    
+    .mensagem {
+        gap: 8px;
+    }
+    
+    .mensagem input {
+        padding: 10px;
+    }
+    
+    .mensagem_input-text{
+        width: 20vw;
+        height: 1.5vh;
+    }
+    
+    .mensagem_input-submit{
+        width: 20vw;
+        height: 4vh;
+    }
+}

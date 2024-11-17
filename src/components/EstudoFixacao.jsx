@@ -52,7 +52,7 @@ function EstudoFixacao(){
                         <ul className='primeira-sessao_estatisticas'>
                             {estatisticas.map((estatistica) => (
                                 <li className="primeira-sessao_estatisticas_div" key={estatistica.id}>
-                                    <p id='primeira-sessao_div_paragrafo'>{estatistica.dia}</p>
+                                    <p id='primeira-sessao_div_paragrafo'>{estatistica.dia_formatado}</p>
                                     <p id='primeira-sessao_div_nota'>{estatistica.acertos}</p>
                                 </li>
                             ))}
@@ -95,9 +95,7 @@ function EstudoFixacao(){
                             <ul className='terceira-sessao_primeira-div_sessao-ultimos-estudos'>
                             {estatisticas.map((estatistica) => (
                                 <li className="primeira-div_sessao-ultimos-estudos_nota" key={estatistica.id}>
-                                    <div>
-                                        <p>Acertos: {estatistica.acertos}</p>
-                                    </div>
+                                    <p>Acertos: {estatistica.acertos}</p>
                                     <p id='primeira-div_sessao-ultimos-estudos_mencao'>{estatistica.mencao}</p>
                                 </li>
                             ))}

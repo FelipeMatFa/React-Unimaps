@@ -23,7 +23,7 @@
 
 #main_linha{
     width: 85%;
-    margin: 20px auto; /* Centraliza a linha */
+    margin: 20px auto;
     border: none;
     height: 1px;
     background-color: #000000;
@@ -45,7 +45,7 @@
     border: 1px solid #dbdbdb;
     border-radius: 8px;
     background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     overflow: hidden;
 }
 
@@ -113,19 +113,6 @@
     cursor: pointer;
     font-weight: 600;
 }
-
-/* .posts_listados {
-    width: 100%;
-    max-width: 500px;
-    aspect-ratio: 4 / 5; 
-    overflow: hidden;
-}
-
-.post-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-} */
 
 .post-image {
     width: 100%;
@@ -246,4 +233,418 @@
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
+}
+
+@media screen and (min-width: 300px) and (max-width: 400px){
+    /* Home.jsx */
+    .main{
+        gap: 20px;
+    }
+
+    #main_paragrafo {
+        font-size: 12px;
+    }
+
+    .main_navegacao {
+        gap: 10px;
+    }
+
+    #main_linha{
+        width: 80%;
+    }
+
+    .posts {
+        gap: 30px;
+        padding: 20px;
+    }
+
+    .posts_listados {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .posts_listados_cabecalho {
+        border-bottom: 2px solid #dbdbdb;
+    }
+
+    .posts_listados_cabecalho_usuario {
+        gap: 10px;
+    }
+
+    .user-avatar {
+        height: 40px;
+        width: 40px;
+    }
+
+    .username {
+        font-size: 0.9rem;
+    }
+
+    .posts_listados_cabecalho_botoes{
+        gap: 10px;
+    }
+
+    #botao_excluir{
+        border-radius: 4px;
+        padding: 5px 10px;
+        font-size: 1rem;
+    }
+
+    #botao-info{
+        border: 1px solid black;
+        border-radius: 4px;
+        padding: 5px 10px;
+        font-size: 0.85rem;
+    }
+
+    .post-title {
+        padding: 10px 16px;
+        font-size: 1rem;
+    } 
+
+    /* PerfisComponent.jsx */
+
+    .lista_perfis {
+        gap: 3vw;
+    }
+
+    .perfil_item {
+        gap: 20px;
+        overflow-x: scroll;
+    }
+
+    .perfil_imagem {
+        width: 70px; 
+        height: 70px;
+    }
+
+    .perfil_nome {
+        font-size: 0.5em; 
+    }
+
+    /* ButtonPost.jsx */
+
+    .modal-content {
+        padding: 20px;
+        width: 300px;
+        gap: 10px;
+    }
+
+    #close-button{
+        font-size: 24px;
+    }
+
+    #modal-content_form-input-text{
+        height: 20vh;
+    }
+}
+
+@media screen and (min-width: 401px) and (max-width: 700px){
+    /* Home.jsx */
+    .main{
+        gap: 20px;
+    }
+
+    #main_paragrafo {
+        font-size: 14px;
+    }
+
+    .main_navegacao {
+        gap: 10px;
+    }
+
+    #main_linha{
+        width: 80%;
+    }
+
+    .posts {
+        gap: 30px;
+        padding: 10px;
+    }
+
+    .posts_listados {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .posts_listados_cabecalho {
+        border-bottom: 2px solid #dbdbdb;
+    }
+
+    .posts_listados_cabecalho_usuario {
+        gap: 10px;
+    }
+
+    .user-avatar {
+        height: 40px;
+        width: 40px;
+    }
+
+    .username {
+        font-size: 0.9rem;
+    }
+
+    .posts_listados_cabecalho_botoes{
+        gap: 10px;
+    }
+
+    #botao_excluir{
+        border-radius: 4px;
+        padding: 5px 10px;
+        font-size: 1rem;
+    }
+
+    #botao-info{
+        border: 1px solid black;
+        border-radius: 4px;
+        padding: 5px 10px;
+        font-size: 0.85rem;
+    }
+
+    .post-title {
+        padding: 10px 16px;
+        font-size: 1rem;
+    } 
+
+    /* PerfisComponent.jsx */
+
+    .lista_perfis {
+        gap: 3vw;
+    }
+
+    .perfil_item {
+        gap: 20px;
+        overflow-x: scroll;
+    }
+
+    .perfil_imagem {
+        width: 80px; 
+        height: 80px;
+    }
+
+    .perfil_nome {
+        font-size: 0.6em; 
+    }
+
+    /* ButtonPost.jsx */
+
+    .modal-content {
+        padding: 20px;
+        width: 300px;
+        gap: 10px;
+    }
+
+    #close-button{
+        font-size: 24px;
+    }
+
+    #modal-content_form-input-text{
+        height: 20vh;
+    }
+}
+
+@media screen and (min-width: 701px) and (max-width: 900px){
+    /* Home.jsx */
+    .main{
+        gap: 20px;
+    }
+
+    #main_paragrafo {
+        font-size: 18px;
+    }
+
+    .main_navegacao {
+        gap: 10px;
+    }
+
+    #main_linha{
+        width: 83%;
+    }
+
+    .posts {
+        gap: 30px;
+        padding: 20px;
+    }
+
+    .posts_listados {
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .posts_listados_cabecalho {
+        border-bottom: 2px solid #dbdbdb;
+    }
+
+    .posts_listados_cabecalho_usuario {
+        gap: 15px;
+    }
+
+    .user-avatar {
+        height: 45px;
+        width: 45px;
+    }
+
+    .username {
+        font-size: 1rem;
+    }
+
+    .posts_listados_cabecalho_botoes{
+        gap: 10px;
+    }
+
+    #botao_excluir{
+        border-radius: 4px;
+        padding: 5px 10px;
+        font-size: 1rem;
+    }
+
+    #botao-info{
+        border-radius: 4px;
+        padding: 5px 10px;
+        font-size: 0.85rem;
+    }
+
+    .post-title {
+        padding: 10px 16px;
+        font-size: 1rem;
+    } 
+
+    /* PerfisComponent.jsx */
+
+    .lista_perfis {
+        gap: 3vw;
+    }
+
+    .perfil_item {
+        gap: 20px;
+        overflow-x: scroll;
+    }
+
+    .perfil_imagem {
+        width: 85px; 
+        height: 85px;
+    }
+
+    .perfil_nome {
+        font-size: 0.7em; 
+    }
+
+    /* ButtonPost.jsx */
+
+    .modal-content {
+        padding: 20px;
+        width: 300px;
+        gap: 10px;
+    }
+
+    #close-button{
+        font-size: 24px;
+    }
+
+    #modal-content_form-input-text{
+        height: 20vh;
+    }
+}
+
+@media screen and (min-width: 901px) and (max-width: 1200px){
+    /* Home.jsx */
+    .main{
+        gap: 20px;
+    }
+
+    #main_paragrafo {
+        font-size: 18px;
+    }
+
+    .main_navegacao {
+        gap: 10px;
+    }
+
+    #main_linha{
+        width: 83%;
+    }
+
+    .posts {
+        gap: 30px;
+        padding: 20px;
+    }
+
+    .posts_listados {
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .posts_listados_cabecalho {
+        border-bottom: 2px solid #dbdbdb;
+    }
+
+    .posts_listados_cabecalho_usuario {
+        gap: 15px;
+    }
+
+    .user-avatar {
+        height: 45px;
+        width: 45px;
+    }
+
+    .username {
+        font-size: 1rem;
+    }
+
+    .posts_listados_cabecalho_botoes{
+        gap: 10px;
+    }
+
+    #botao_excluir{
+        border-radius: 4px;
+        padding: 5px 10px;
+        font-size: 1rem;
+    }
+
+    #botao-info{
+        border-radius: 4px;
+        padding: 5px 10px;
+        font-size: 0.85rem;
+    }
+
+    .post-title {
+        padding: 10px 16px;
+        font-size: 1rem;
+    } 
+
+    /* PerfisComponent.jsx */
+
+    .lista_perfis {
+        gap: 3vw;
+    }
+
+    .perfil_item {
+        gap: 20px;
+        overflow-x: scroll;
+    }
+
+    .perfil_imagem {
+        width: 85px; 
+        height: 85px;
+    }
+
+    .perfil_nome {
+        font-size: 0.7em; 
+    }
+
+    /* ButtonPost.jsx */
+
+    .modal-content {
+        padding: 20px;
+        width: 300px;
+        gap: 10px;
+    }
+
+    #close-button{
+        font-size: 24px;
+    }
+
+    #modal-content_form-input-text{
+        height: 20vh;
+    }
 }

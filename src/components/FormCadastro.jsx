@@ -12,20 +12,6 @@ function FormCadastro() {
     const [senha, setSenha] = useState("");
 
     const foto = '/public/user.png'
-
-    // const postFotoUsuario = async (titulo, imagePath) => {
-    //     try {
-    //         const { data } = await axios.post('http://localhost:3001/api/upload', {
-    //             titulo,
-    //             imagem: imagePath,
-    //             id_usuario: sessionStorage.getItem('id'),
-    //         });
-    //         if (data.success) console.log("Publicação criada com sucesso!");
-    //         else alert(data.message || "Erro inesperado.");
-    //     } catch (error) {
-    //         console.error("Erro ao fazer a postagem:", error);
-    //     }
-    // };
     
     const navigate = useNavigate();
 

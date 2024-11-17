@@ -55,3 +55,84 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+@media screen and (min-width: 300px) and (max-width: 401px){
+    .marcadores{
+        height: 60vh;
+        width: 30vw;
+        gap: 10px;
+    }
+    
+    .marcadores_listados {
+        padding: 1vh;
+        gap: 10px;
+    }
+    
+    #marcadores_listados-img {
+        height: 3vh;
+    }
+    
+    #marcadores_listados_botao {
+        height: 25px; 
+        width: 25px;
+    }
+    
+    #marcadores_listados_conteudo_descricao{
+        font-size: 10px;
+        width: 10vw;
+    }
+}
+
+@media screen and (min-width: 401px) and (max-width: 501px){
+    .marcadores{
+        height: 60vh;
+        width: 30vw;
+        gap: 10px;
+    }
+    
+    .marcadores_listados {
+        padding: 1vh;
+        gap: 10px;
+    }
+    
+    #marcadores_listados-img {
+        height: 3vh;
+    }
+    
+    #marcadores_listados_botao {
+        height: 25px; 
+        width: 25vw;
+    }
+    
+    #marcadores_listados_conteudo_descricao{
+        font-size: 10px;
+        width: 10vw;
+    }
+}  
+
+@media screen and (min-width: 501px) and (max-width: 800px){
+    .marcadores{
+        height: 60vh;
+        width: 30vw;
+        gap: 10px;
+    }
+    
+    .marcadores_listados {
+        padding: 1vh;
+        gap: 10px;
+    }
+    
+    #marcadores_listados-img {
+        height: 4vh;
+    }
+    
+    #marcadores_listados_botao {
+        height: 25px; 
+        width: 25px;
+    }
+    
+    #marcadores_listados_conteudo_descricao{
+        font-size: 10px;
+        width: 10vw;
+    }
+}
