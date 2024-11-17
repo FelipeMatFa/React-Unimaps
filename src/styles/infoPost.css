@@ -1,0 +1,102 @@
+.primeira-sessao_posts {
+    padding: 4vh 20vh 4vh 20vh;
+}
+
+.posts-usuario {
+    list-style: none;
+    padding: 0;
+}
+
+.posts-usuario_corpo {
+    display: grid;
+    grid-template-areas: 
+        "imagem conteudo";
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    padding: 16px;
+}
+
+.imagem {
+    grid-area: imagem;
+    max-height: 100%; 
+    width: 100%; 
+    object-fit: cover;
+    aspect-ratio: 4 / 4; 
+    border-radius: 8px; 
+    overflow: hidden; 
+}
+
+.conteudo {
+    grid-area: conteudo;
+}
+
+.sessao-conteudo {
+    display: grid;
+    grid-template-areas: 
+        "comentarios" 
+        "mensagem";
+    grid-template-rows: 70% 5%;
+    gap: 16px;
+    padding: 16px;
+    height: 100%;
+}
+
+.comentarios {
+    grid-area: comentarios;
+    overflow-y: auto;
+    max-height: 85vh;
+}
+
+.comentario {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin-bottom: 10px;
+    padding: 5px;
+    background-color: #f9f9f9;
+    border-radius: 3px;
+}
+
+.comentario-info{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#nome-usuario{
+    font-weight: 600;
+    font-size: 18px;
+}
+
+#comentario-usuario{
+    font-size: 16px;
+}
+
+.comentario img{
+    height: 3vh;
+    border-radius: 50px;
+}
+
+.mensagem {
+    grid-area: mensagem;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.mensagem input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.mensagem_input-text{
+    width: 30vw;
+}
+
+.mensagem_input-submit{
+    width: 5vw;
+    color: white;
+    background-color: black;
+}
+

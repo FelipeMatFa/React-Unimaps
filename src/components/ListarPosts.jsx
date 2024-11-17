@@ -2,11 +2,23 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import ButtonRemove from '../components/ButtonRemove';
 
+import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+
 import '../styles/PerfilPage.css';
 
 function ListarPosts() {
     const [posts, setPosts] = useState([]);
     let id = sessionStorage.getItem('id');
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const infoPost = (id) => {
+        navigate('/home/infopost', {
+            state: {id}
+        });
+    };
 
     useEffect(() => {
         const requisitarPosts = async () => {
@@ -33,7 +45,7 @@ function ListarPosts() {
     return (
         <ul className="posts-usuario">
             {posts.map(post => (
-                <div className="posts-listados" key={post.id}>
+                <div className="posts-listados" key={post.id} onClick={() => infoPost(post.id)}>
                     <div className="image-container">
                         <img 
                             id="foto-post"

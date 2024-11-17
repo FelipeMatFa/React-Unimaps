@@ -104,7 +104,7 @@ async function criarPosts(request, response) {
     });
 }
 
-async function excluirPost(request, response) { 
+async function excluirPost(request, response) {
     const id = request.query.id;
     const params = [id];
 
@@ -119,7 +119,7 @@ async function excluirPost(request, response) {
                 sqlMessage: err.sqlMessage
             });
         }
-        
+
         response.status(201).json({
             success: true,
             message: "Sucesso!",
@@ -128,32 +128,64 @@ async function excluirPost(request, response) {
     });
 }
 
+
 async function selecionarPost(request, response) {
-    const id = request.query.id; // Obtem o ID da query string
+    const id = request.query.id; // Obtém o ID da query string
 
     if (!id) {
         return response.status(400).json({
             success: false,
-            message: "ID não fornecido.",
+            message: "ID do post não fornecido.",
         });
     }
 
-    const query = "SELECT * FROM post WHERE id = ?";
+    const query = `
+        SELECT 
+            post.id AS post_id, 
+            post.id_usuario, 
+            post.imagem, 
+            post.titulo,
+            comentarios.id AS comentario_id,
+            comentarios.comentario,
+            usuario.nome AS nome_usuario,
+            usuario.foto AS foto_usuario
+        FROM post
+        LEFT JOIN comentarios ON post.id = comentarios.id_post
+        LEFT JOIN usuario ON post.id_usuario = usuario.id
+        WHERE post.id = ?`;
 
     connection.query(query, [id], (err, results) => {
         if (err) {
             return response.status(500).json({
                 success: false,
-                message: "Erro ao buscar o post!",
+                message: "Erro ao buscar os dados do post e comentários!",
                 error: err.sqlMessage,
             });
         }
 
         if (results.length > 0) {
+            // Agrupando os dados do post e comentários
+            const post = {
+                id: results[0].post_id,
+                id_usuario: results[0].id_usuario,
+                imagem: results[0].imagem,
+                titulo: results[0].titulo,
+                usuario: {
+                    nome: results[0].nome_usuario,
+                    foto: results[0].foto_usuario,
+                },
+                comentarios: results
+                    .filter((row) => row.comentario_id)
+                    .map((row) => ({
+                        id: row.comentario_id,
+                        texto: row.comentario,
+                    })),
+            };
+
             return response.status(200).json({
                 success: true,
-                message: "Post encontrado com sucesso!",
-                data: results,
+                message: "Post e comentários encontrados com sucesso!",
+                data: post,
             });
         } else {
             return response.status(404).json({
@@ -163,6 +195,7 @@ async function selecionarPost(request, response) {
         }
     });
 }
+
 
 module.exports = {
     selecionarPosts,

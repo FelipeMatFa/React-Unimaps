@@ -8,6 +8,7 @@ const chatRouter = require('./routes/chatRouter');
 const usuario = require('./routes/usuarioRouter');
 const uploadRouter = require('./routes/uploadRouter');
 const postsRouter = require('./routes/postsRouter');
+const comentariosRouter = require('./routes/comentariosRouter');
 
 const app = express();
 app.set('port', process.env.PORT || 3005);
@@ -22,7 +23,8 @@ app.use('/api', [
     chatRouter,
     usuario,
     uploadRouter,
-    postsRouter
+    postsRouter,
+    comentariosRouter,
 ]);
 
 module.exports = app;
