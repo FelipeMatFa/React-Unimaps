@@ -29,41 +29,41 @@ function Main(){
                         </section>
                     </div>
                     <div className='sessao-recursos_conteudo'>
-                        <img src={Images.imagemIA} alt="" />
+                        <img src={Images.Conversas} alt="" />
                         <section className='conteudo-informacoes'>
                             <p 
                                 id='conteudo_titulo'
-                                >Crie prazos
+                                >Converse com estudantes
                             </p>
                             <p
                                 id='conteudo_descricao'
-                                >Adicione tarefas e prazos para começar a se organizar
+                                >Dentro do unimaps você consegue conversar através de comentários nos posts.
                             </p>
                         </section>
                     </div>
                     <div className='sessao-recursos_conteudo'>
-                        <img src={Images.imagemIA} alt="" />
+                        <img src={Images.Marcadores} alt="" />
                         <section className='conteudo-informacoes'>
                             <p 
                                 id='conteudo_titulo'
-                                >Faça suas anotações
+                                >Deixe seus marcadores
                             </p>
                             <p
                                 id='conteudo_descricao'
-                                >Deixe tudo que você faz ou vai fazer registrado na nuvem.
+                                >Deixe seus marcadores do mapa registrado na nuvem.
                             </p>
                         </section>
                     </div>
                     <div className='sessao-recursos_conteudo'>
-                        <img src={Images.imagemIA} alt="" />
+                        <img src={Images.Enem} alt="" />
                         <section className='conteudo-informacoes'>
                             <p 
                                 id='conteudo_titulo'
-                                >Estudo com IA
+                                >Consulte o Enem
                             </p>
                             <p
                                 id='conteudo_descricao'
-                                >Uma maneira prática e nova de se estudar com pouco tempo.
+                                >Um recurso que te possibilita consultar as ultimas 20 provas do Enem sem precisar baixar as provas.
                             </p>
                         </section>
                     </div>

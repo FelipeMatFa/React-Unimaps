@@ -10,6 +10,11 @@ import telaInicial from './Tela_inicial.png'
 import fotoCriador from './FotoCriador.jpg'
 import passWord from './Password.png'
 import fotoPerfil from './fotoPerfil.png'
+import Conversas from './conversar.jpeg'
+import Marcadores from './marcadores.jpeg'
+import Enem from './enem.jpeg'
+import Ia from './ia.jpg'
+import Estudos from './estudos.jpeg'
 
 export default{
     infoIco: infoIco,
@@ -24,4 +29,9 @@ export default{
     fotoCriador: fotoCriador,
     passWord: passWord,
     fotoPerfil: fotoPerfil,
+    Conversas: Conversas,
+    Marcadores: Marcadores,
+    Enem: Enem,
+    Ia: Ia,
+    Estudos: Estudos,
 }
